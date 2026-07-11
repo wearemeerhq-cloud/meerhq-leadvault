@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow">
+<title>Payment Confirmation | LeadVault™ — Meer HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light only;
+  --bg: #FFFFFF; --bg-soft: #F8F8F8;
+  --ink: #111111; --ink-2: #2A2A2A; --ink-3: #555555;
+  --orange: #FF5A1F; --orange-dk: #E04A12; --orange-lt: #FFF3EE; --orange-mid: #FFE0D0;
+  --green: #16794C; --green-lt: #ECFDF5; --green-mid: #BEE8D4;
+  --red: #C0392B; --red-lt: #FEF0EE; --red-mid: #F3C9C2;
+  --border: #EFEFEF; --border-dk: #DEDEDE;
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.08);
+  --shadow-lg: 0 24px 64px rgba(0,0,0,0.12);
+  --radius-md: 14px; --radius-lg: 20px; --radius-xl: 28px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg-soft); color: var(--ink);
+  font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+
+header { padding: 24px 24px 0; }
+.logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; display: flex; align-items: baseline; }
+.logo .dot { color: var(--orange); }
+
+main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+.card {
+  background: #fff; border: 1px solid var(--border); border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg); max-width: 480px; width: 100%;
+  padding: 44px 36px; text-align: center; position: relative; overflow: hidden;
+}
+@media (max-width: 480px) { .card { padding: 36px 24px; } }
+
+.icon-circle {
+  width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 24px; animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.icon-circle.success { background: var(--green-lt); color: var(--green); }
+.icon-circle.failure { background: var(--red-lt); color: var(--red); }
+.icon-circle.loading { background: var(--bg-soft); color: var(--ink-3); }
+@keyframes popIn { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.card h1 { font-size: 24px; margin-bottom: 10px; }
+.card .sub { font-size: 15px; color: var(--ink-3); line-height: 1.6; margin-bottom: 28px; }
+
+.order-summary {
+  background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-md);
+  padding: 18px 20px; text-align: left; margin-bottom: 24px;
+}
+.order-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; font-size: 13.5px; }
+.order-row span:first-child { color: var(--ink-3); }
+.order-row span:last-child { color: var(--ink); font-weight: 600; }
+
+.next-steps { text-align: left; margin-bottom: 28px; }
+.next-steps .label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange); margin-bottom: 14px; }
+.step-item { display: flex; gap: 12px; padding: 10px 0; }
+.step-num {
+  width: 22px; height: 22px; border-radius: 50%; background: var(--orange-lt); color: var(--orange-dk);
+  font-size: 11.5px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.step-item p { font-size: 13.5px; color: var(--ink-2); line-height: 1.5; padding-top: 1px; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 14px 26px; border-radius: 999px; font-size: 14.5px; font-weight: 600;
+  border: 1.5px solid transparent; transition: all 0.18s; width: 100%;
+}
+.btn-primary { background: var(--orange); color: #fff; box-shadow: 0 2px 8px rgba(255,90,31,0.3); }
+.btn-primary:hover { background: var(--orange-dk); transform: translateY(-1px); }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--border-dk); margin-top: 10px; }
+.btn-outline:hover { border-color: var(--ink); }
+
+.ref-note { font-size: 12px; color: var(--ink-3); margin-top: 22px; }
+.ref-note strong { color: var(--ink-2); font-family: 'Inter', monospace; }
+
+.spinner {
+  width: 26px; height: 26px; border: 3px solid var(--border); border-top-color: var(--orange);
+  border-radius: 50%; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.sync-note { font-size: 12px; color: var(--ink-3); margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Meer<span class="dot">HQ</span></div>
+</header>
+
+<main>
+  <div class="card" id="card">
+    <!-- Populated by JS on load -->
+    <div class="icon-circle loading"><div class="spinner"></div></div>
+    <h1>Checking your payment…</h1>
+    <p class="sub">One moment while we confirm your transaction.</p>
+  </div>
+</main>
+
+<script>
+/* ============================================================
+   CONFIG — keep in sync with leadvault-landing-page.html / admin.html
+============================================================ */
+const PAYMENT_LINKS = {
+  starter: 'https://flutterwave.com/pay/leadvault-starter',
+  growth:  'https://flutterwave.com/pay/leadvault-growth',
+  scale:   'https://flutterwave.com/pay/leadvault-scale'
+};
+const PLAN_META = {
+  starter: { label: 'Starter', price: '$29.99', leads: '100 leads', delivery: '24 hours' },
+  growth:  { label: 'Growth',  price: '$59.99', leads: '250 leads', delivery: '48 hours' },
+  scale:   { label: 'Scale',   price: '$119.99', leads: '500 leads', delivery: '72 hours' }
+};
+const NOTIFY_EMAIL = 'contact@meerhq.io';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9wNLSzxSGCKl5L9m3j5UqXlUVgSXg6uLMCUO1NOp3XRQ2_XIIwXcV5sCPM2m5TOt_bw/exec';
+const SHEET_BACKEND_CONFIGURED = APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1;
+const MAIN_PAGE_URL = 'leadvault-landing-page.html';
+
+/* ============================================================
+   READ THE FLUTTERWAVE REDIRECT PARAMS
+============================================================ */
+const params = new URLSearchParams(window.location.search);
+const status = params.get('status');
+const txRef = params.get('tx_ref');
+const transactionId = params.get('transaction_id');
+
+let pendingOrderId = null;
+try { pendingOrderId = localStorage.getItem('leadvault_pending_order'); } catch (err) { console.error(err); }
+
+let matchedOrder = null;
+function getMatchedOrder() {
+  if (!pendingOrderId) return null;
+  try {
+    const orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+    return orders.find(o => o.id === pendingOrderId) || null;
+  } catch (err) {
+    console.error('Could not read local order cache:', err);
+    return null;
+  }
+}
+
+function markOrderPaidLocally() {
+  if (!pendingOrderId) return;
+  try {
+    const orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+    const idx = orders.findIndex(o => o.id === pendingOrderId);
+    if (idx !== -1) {
+      orders[idx]._paymentConfirmed = true;
+      orders[idx]._flwTxRef = txRef;
+      orders[idx]._flwTransactionId = transactionId;
+      localStorage.setItem('leadvault_orders', JSON.stringify(orders));
+    }
+  } catch (err) {
+    console.error('Could not update local order cache:', err);
+  }
+  try { localStorage.removeItem('leadvault_pending_order'); } catch (err) { console.error(err); }
+}
+
+/* ============================================================
+   NOTIFY ADMIN — email + sheet sync (best-effort, non-blocking)
+============================================================ */
+async function sendPaymentConfirmationEmail(order) {
+  const payload = {
+    _subject: `✅ PAYMENT CONFIRMED — Order ${order ? order.id : txRef}`,
+    Order_ID: order ? order.id : '(not matched locally — check Flutterwave dashboard)',
+    Flutterwave_tx_ref: txRef || '—',
+    Flutterwave_transaction_id: transactionId || '—',
+    Plan: order ? (PLAN_META[order.plan] ? PLAN_META[order.plan].label + ' — ' + PLAN_META[order.plan].price : order.plan) : '—',
+    Customer_Name: order ? order.name : '—',
+    Customer_Email: order ? order.email : '—',
+    Company: order ? order.company : '—',
+    Note: 'This confirms PAYMENT was completed via Flutterwave. Cross-check your Flutterwave dashboard before starting fulfillment.',
+    _template: 'table',
+    _captcha: 'false'
+  };
+  const body = new URLSearchParams(payload).toString();
+  try {
+    await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+      body: body
+    });
+  } catch (err) {
+    console.error('Payment confirmation email failed:', err);
+  }
+}
+
+function syncPaymentToSheet(order) {
+  if (!SHEET_BACKEND_CONFIGURED || !order) return;
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ action: 'confirmPayment', orderId: order.id, flwTxRef: txRef, flwTransactionId: transactionId })
+  }).catch(err => console.error('Could not sync payment confirmation to backend sheet:', err));
+}
+
+/* ============================================================
+   RENDER
+============================================================ */
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function renderSuccess(order) {
+  const meta = order && PLAN_META[order.plan] ? PLAN_META[order.plan] : null;
+  document.getElementById('card').innerHTML = `
+    <div class="icon-circle success">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+    </div>
+    <h1>Payment confirmed</h1>
+    <p class="sub">Thanks${order ? ', ' + escHtml(order.name.split(' ')[0]) : ''} — we've received your payment and notified the team.</p>
+
+    ${order ? `<div class="order-summary">
+      <div class="order-row"><span>Order ID</span><span>${escHtml(order.id)}</span></div>
+      <div class="order-row"><span>Package</span><span>${meta ? meta.label + ' — ' + meta.price : escHtml(order.plan)}</span></div>
+      ${meta ? `<div class="order-row"><span>Delivery window</span><span>${meta.delivery}</span></div>` : ''}
+    </div>` : ''}
+
+    <div class="next-steps">
+      <div class="label">What happens next</div>
+      <div class="step-item"><div class="step-num">1</div><p>Our team starts researching and verifying your leads right away.</p></div>
+      <div class="step-item"><div class="step-num">2</div><p>You'll receive a CSV and Google Sheet link by email${meta ? ' within ' + meta.delivery : ''}.</p></div>
+      <div class="step-item"><div class="step-num">3</div><p>Questions in the meantime? Email <a href="mailto:contact@meerhq.io" style="color:var(--orange);font-weight:600;">contact@meerhq.io</a>.</p></div>
+    </div>
+
+    <a class="btn btn-primary" href="${MAIN_PAGE_URL}">Return to homepage →</a>
+    ${txRef ? `<p class="ref-note">Reference: <strong>${escHtml(txRef)}</strong></p>` : ''}
+  `;
+}
+
+function renderFailure(order) {
+  const retryPlan = order ? order.plan : 'growth';
+  document.getElementById('card').innerHTML = `
+    <div class="icon-circle failure">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </div>
+    <h1>Payment wasn't completed</h1>
+    <p class="sub">No charge went through${status ? ' (status: ' + escHtml(status) + ')' : ''}. Nothing was lost — you can try again whenever you're ready.</p>
+    <a class="btn btn-primary" href="${MAIN_PAGE_URL}?retry=${encodeURIComponent(retryPlan)}">Try again →</a>
+    <a class="btn btn-outline" href="mailto:contact@meerhq.io">Contact us instead</a>
+  `;
+}
+
+function renderNoStatus() {
+  document.getElementById('card').innerHTML = `
+    <div class="icon-circle loading">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+    </div>
+    <h1>No payment reference found</h1>
+    <p class="sub">This page is meant to be reached after completing a payment via Flutterwave. If you arrived here directly, head back to place an order.</p>
+    <a class="btn btn-primary" href="${MAIN_PAGE_URL}">Go to LeadVault →</a>
+  `;
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+(function init() {
+  if (!status) {
+    renderNoStatus();
+    return;
+  }
+
+  matchedOrder = getMatchedOrder();
+
+  if (status === 'successful') {
+    markOrderPaidLocally();
+    renderSuccess(matchedOrder);
+    sendPaymentConfirmationEmail(matchedOrder);
+    syncPaymentToSheet(matchedOrder);
+  } else {
+    renderFailure(matchedOrder);
+  }
+
+  // Clean the query string so refreshing/bookmarking doesn't re-trigger this.
+  window.history.replaceState(null, '', window.location.pathname);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff">
+<meta name="robots" content="noindex, nofollow">
+<title>Admin — LeadVault™ Orders | Meer HQ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  color-scheme: light only;
+  --bg: #FFFFFF; --bg-soft: #F8F8F8; --bg-card: #FAFAFA;
+  --ink: #111111; --ink-2: #2A2A2A; --ink-3: #555555;
+  --orange: #FF5A1F; --orange-dk: #E04A12; --orange-lt: #FFF3EE; --orange-mid: #FFE0D0;
+  --green: #16794C; --green-lt: #ECFDF5;
+  --red: #C0392B; --red-lt: #FEF0EE;
+  --border: #EFEFEF; --border-dk: #DEDEDE;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.10);
+  --radius-sm: 8px; --radius-md: 14px; --radius-lg: 20px;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: 'Inter', sans-serif; font-size: 15px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+.wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* Header */
+header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,0.92); backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 17px; display: flex; align-items: center; gap: 10px; }
+.logo span { color: var(--orange); }
+.logo .tag { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); border-left: 1px solid var(--border-dk); padding-left: 10px; }
+.nav-links { display: flex; gap: 16px; align-items: center; }
+.nav-links a { font-size: 13.5px; color: var(--ink-3); }
+.nav-links a:hover { color: var(--ink); }
+
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 10px 18px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+  border: 1.5px solid transparent; transition: all 0.15s; white-space: nowrap;
+}
+.btn-primary { background: var(--orange); color: #fff; box-shadow: 0 2px 8px rgba(255,90,31,0.3); }
+.btn-primary:hover { background: var(--orange-dk); }
+.btn-outline { background: transparent; color: var(--ink); border-color: var(--border-dk); }
+.btn-outline:hover { border-color: var(--ink); }
+.btn-danger { background: transparent; color: var(--red); border-color: #F3C9C2; }
+.btn-danger:hover { background: var(--red-lt); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Auth screen */
+.auth-wrap {
+  min-height: calc(100vh - 64px); display: flex; align-items: center; justify-content: center;
+  padding: 40px 20px; text-align: center;
+}
+.auth-card { max-width: 380px; width: 100%; }
+.auth-icon {
+  width: 52px; height: 52px; border-radius: 14px; background: var(--orange-lt); color: var(--orange);
+  display: flex; align-items: center; justify-content: center; margin: 0 auto 22px;
+}
+.auth-card h1 { font-size: 22px; margin-bottom: 8px; }
+.auth-card p { font-size: 14px; color: var(--ink-3); margin-bottom: 26px; }
+.pin-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 14px; }
+.pin-row input {
+  padding: 12px 18px; border: 1.5px solid var(--border-dk); border-radius: var(--radius-sm);
+  font-size: 20px; font-family: 'Inter', monospace; letter-spacing: 0.15em; text-align: center;
+  width: 150px;
+}
+.pin-row input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,90,31,0.12); }
+.auth-error { font-size: 13px; color: var(--red); margin-top: 4px; display: none; }
+.auth-error.show { display: block; }
+
+/* Config warning */
+.config-warning {
+  max-width: 640px; margin: 40px auto; padding: 28px 30px;
+  background: var(--orange-lt); border: 1px solid var(--orange-mid); border-radius: var(--radius-lg);
+}
+.config-warning h3 { font-size: 17px; margin-bottom: 10px; color: var(--orange-dk); }
+.config-warning p { font-size: 14px; color: var(--ink-2); line-height: 1.65; margin-bottom: 10px; }
+.config-warning code {
+  background: #fff; border: 1px solid var(--orange-mid); border-radius: 6px;
+  padding: 2px 7px; font-size: 12.5px; font-family: 'Inter', monospace;
+}
+
+/* Dashboard */
+.dash { display: none; padding: 32px 0 60px; }
+.dash.show { display: block; }
+.dash-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 28px; }
+.dash-top h1 { font-size: 26px; margin-bottom: 4px; }
+.dash-top p { font-size: 13.5px; color: var(--ink-3); }
+.dash-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Stat cards */
+.stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 28px; }
+@media (max-width: 720px) { .stat-row { grid-template-columns: repeat(2, 1fr); } }
+.stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 18px 20px; }
+.stat-card .num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px; color: var(--ink); }
+.stat-card .num.accent { color: var(--orange); }
+.stat-card .lbl { font-size: 12.5px; color: var(--ink-3); font-weight: 500; margin-top: 4px; }
+
+/* Filters */
+.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.filters input, .filters select {
+  padding: 10px 14px; border: 1.5px solid var(--border-dk); border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif; font-size: 13.5px; background: #fff;
+}
+.filters input { flex: 1; min-width: 200px; }
+.filters input:focus, .filters select:focus { outline: none; border-color: var(--orange); }
+
+/* Order cards */
+.order-list { display: flex; flex-direction: column; gap: 14px; }
+.order-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px 22px; }
+.order-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.order-meta h4 { font-size: 15.5px; margin-bottom: 4px; }
+.order-date { font-size: 12.5px; color: var(--ink-3); font-weight: 500; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.badge { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.badge-ok { background: var(--green-lt); color: var(--green); }
+.badge-pending { background: #FEF6E7; color: #A66A00; }
+.plan-badge { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 5px 11px; border-radius: 999px; white-space: nowrap; flex-shrink: 0; }
+.plan-starter { background: #EEF2FF; color: #4F46E5; }
+.plan-growth { background: var(--orange-lt); color: var(--orange-dk); }
+.plan-scale { background: var(--green-lt); color: var(--green); }
+.order-details { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 14px; }
+@media (max-width: 640px) { .order-details { grid-template-columns: 1fr; } }
+.od-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); margin-bottom: 4px; }
+.od-val { font-size: 13.5px; color: var(--ink-2); }
+.order-icp { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; font-size: 13.5px; color: var(--ink-2); line-height: 1.7; margin-bottom: 14px; }
+.order-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* Empty / loading / error states */
+.state-block { text-align: center; padding: 80px 20px; }
+.state-block .ic { width: 44px; height: 44px; margin: 0 auto 18px; color: var(--border-dk); }
+.state-block h3 { font-size: 18px; margin-bottom: 8px; }
+.state-block p { font-size: 14px; color: var(--ink-3); max-width: 400px; margin: 0 auto; }
+.spinner-lg {
+  width: 28px; height: 28px; border: 3px solid var(--border); border-top-color: var(--orange);
+  border-radius: 50%; margin: 0 auto 18px; animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">Meer<span>HQ</span><span class="tag">Admin</span></div>
+    <div class="nav-links">
+      <a href="leadvault-landing-page.html">← Back to LeadVault page</a>
+    </div>
+  </div>
+</header>
+
+<!-- AUTH GATE -->
+<div class="auth-wrap" id="authWrap">
+  <div class="auth-card">
+    <div class="auth-icon">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h1>Admin Access</h1>
+    <p>Enter your admin PIN to view all LeadVault orders.</p>
+    <div class="pin-row">
+      <input type="password" id="pinInput" maxlength="6" placeholder="••••" autocomplete="off" inputmode="numeric">
+      <button class="btn btn-primary" onclick="checkPin()">Enter</button>
+    </div>
+    <p class="auth-error" id="authError">Incorrect PIN. Please try again.</p>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dash" id="dash">
+  <div class="wrap">
+
+    <div class="dash-top">
+      <div>
+        <h1>LeadVault™ Orders</h1>
+        <p id="dashSubtitle">Loading orders from all devices…</p>
+      </div>
+      <div class="dash-actions">
+        <button class="btn btn-outline" onclick="loadOrders()">↻ Refresh</button>
+        <button class="btn btn-outline" onclick="exportCSV()">↓ Export CSV</button>
+      </div>
+    </div>
+
+    <div class="stat-row" id="statRow" style="display:none;">
+      <div class="stat-card"><div class="num" id="statTotal">0</div><div class="lbl">Total orders</div></div>
+      <div class="stat-card"><div class="num accent" id="statPaid">0</div><div class="lbl">Paid</div></div>
+      <div class="stat-card"><div class="num" id="statPending">0</div><div class="lbl">Awaiting payment</div></div>
+      <div class="stat-card"><div class="num" id="statRevenue">$0</div><div class="lbl">Confirmed revenue</div></div>
+    </div>
+
+    <div class="filters" id="filtersRow" style="display:none;">
+      <input type="text" id="searchInput" placeholder="Search by name, email, company, or order ID…" oninput="renderOrders()">
+      <select id="planFilter" onchange="renderOrders()">
+        <option value="">All plans</option>
+        <option value="starter">Starter</option>
+        <option value="growth">Growth</option>
+        <option value="scale">Scale</option>
+      </select>
+      <select id="payFilter" onchange="renderOrders()">
+        <option value="">All payment statuses</option>
+        <option value="paid">Paid</option>
+        <option value="pending">Awaiting payment</option>
+      </select>
+    </div>
+
+    <div id="ordersContainer">
+      <div class="state-block">
+        <div class="spinner-lg"></div>
+        <h3>Loading orders…</h3>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — fill these in after deploying apps-script-backend.gs
+============================================================ */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9wNLSzxSGCKl5L9m3j5UqXlUVgSXg6uLMCUO1NOp3XRQ2_XIIwXcV5sCPM2m5TOt_bw/exec'; // e.g. https://script.google.com/macros/s/AKfycb.../exec
+const ADMIN_SECRET_KEY = 'JvKafxy9t0NjipoKTWlblCp7PNWao7IH'; // must match SECRET_KEY in apps-script-backend.gs
+const ADMIN_PIN = '2026'; // ← change this too
+
+const PLAN_META = {
+  starter: { label: 'Starter', price: 29.99 },
+  growth:  { label: 'Growth',  price: 59.99 },
+  scale:   { label: 'Scale',   price: 119.99 }
+};
+
+let allOrders = [];
+let isConfigured = APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1 && ADMIN_SECRET_KEY.indexOf('CHANGE-THIS') === -1;
+
+/* ============================================================
+   AUTH
+============================================================ */
+function checkPin() {
+  const val = document.getElementById('pinInput').value;
+  if (val === ADMIN_PIN) {
+    document.getElementById('authWrap').style.display = 'none';
+    document.getElementById('dash').classList.add('show');
+    loadOrders();
+  } else {
+    document.getElementById('authError').classList.add('show');
+    document.getElementById('pinInput').value = '';
+    document.getElementById('pinInput').focus();
+  }
+}
+document.getElementById('pinInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkPin(); });
+document.getElementById('pinInput').focus();
+
+/* ============================================================
+   LOAD ORDERS FROM APPS SCRIPT BACKEND
+============================================================ */
+async function loadOrders() {
+  const container = document.getElementById('ordersContainer');
+
+  if (!isConfigured) {
+    container.innerHTML = configWarningHTML();
+    document.getElementById('dashSubtitle').textContent = 'Backend not connected yet';
+    return;
+  }
+
+  container.innerHTML = `<div class="state-block"><div class="spinner-lg"></div><h3>Loading orders…</h3></div>`;
+
+  try {
+    const url = APPS_SCRIPT_URL + '?key=' + encodeURIComponent(ADMIN_SECRET_KEY) + '&t=' + Date.now();
+    const res = await fetch(url);
+    const data = await res.json();
+
+    if (data.error) {
+      container.innerHTML = errorStateHTML(data.error);
+      return;
+    }
+
+    allOrders = data.orders || [];
+    document.getElementById('statRow').style.display = 'grid';
+    document.getElementById('filtersRow').style.display = 'flex';
+    renderOrders();
+  } catch (err) {
+    console.error('Failed to load orders:', err);
+    container.innerHTML = errorStateHTML('Could not reach the backend. Check that APPS_SCRIPT_URL is correct and the Apps Script is deployed with "Who has access: Anyone".');
+  }
+}
+
+/* ============================================================
+   RENDER
+============================================================ */
+function renderOrders() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const planFilter = document.getElementById('planFilter').value;
+  const payFilter = document.getElementById('payFilter').value;
+
+  let filtered = allOrders.filter(o => {
+    const paid = String(o.PaymentConfirmed).toLowerCase() === 'yes';
+    if (planFilter && o.Plan !== planFilter) return false;
+    if (payFilter === 'paid' && !paid) return false;
+    if (payFilter === 'pending' && paid) return false;
+    if (search) {
+      const hay = [o.Name, o.Email, o.Company, o.OrderID].join(' ').toLowerCase();
+      if (!hay.includes(search)) return false;
+    }
+    return true;
+  });
+
+  // Stats always reflect ALL orders, not the filtered view
+  const total = allOrders.length;
+  const paidOrders = allOrders.filter(o => String(o.PaymentConfirmed).toLowerCase() === 'yes');
+  const revenue = paidOrders.reduce((sum, o) => sum + (PLAN_META[o.Plan] ? PLAN_META[o.Plan].price : 0), 0);
+  document.getElementById('statTotal').textContent = total;
+  document.getElementById('statPaid').textContent = paidOrders.length;
+  document.getElementById('statPending').textContent = total - paidOrders.length;
+  document.getElementById('statRevenue').textContent = '$' + revenue.toFixed(2);
+  document.getElementById('dashSubtitle').textContent = total + ' order' + (total !== 1 ? 's' : '') + ' across all devices · synced from Google Sheets';
+
+  const container = document.getElementById('ordersContainer');
+  if (!filtered.length) {
+    container.innerHTML = `<div class="state-block">
+      <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg>
+      <h3>${allOrders.length ? 'No orders match your filters' : 'No orders yet'}</h3>
+      <p>${allOrders.length ? 'Try clearing the search or filters above.' : 'New orders will appear here as customers submit the LeadVault intake form.'}</p>
+    </div>`;
+    return;
+  }
+
+  const planClass = { starter: 'plan-starter', growth: 'plan-growth', scale: 'plan-scale' };
+  container.innerHTML = `<div class="order-list">` + filtered.map(o => {
+    const paid = String(o.PaymentConfirmed).toLowerCase() === 'yes';
+    const meta = PLAN_META[o.Plan] || { label: o.Plan, price: 0 };
+    return `<div class="order-card">
+      <div class="order-top">
+        <div class="order-meta">
+          <h4>${escHtml(o.Name)} · ${escHtml(o.Company)}</h4>
+          <div class="order-date">
+            ${fmtDate(o.Timestamp)} · ${escHtml(o.OrderID)}
+            <span class="badge ${paid ? 'badge-ok' : 'badge-pending'}">${paid ? '✓ Paid' : '⏳ Awaiting payment'}</span>
+          </div>
+        </div>
+        <span class="plan-badge ${planClass[o.Plan] || 'plan-starter'}">${meta.label} $${meta.price}</span>
+      </div>
+      <div class="order-details">
+        <div><div class="od-label">Email</div><div class="od-val">${escHtml(o.Email)}</div></div>
+        <div><div class="od-label">Website</div><div class="od-val">${o.Website ? escHtml(o.Website) : '—'}</div></div>
+        <div><div class="od-label">Company size</div><div class="od-val">${o.CompanySize ? escHtml(o.CompanySize) : '—'}</div></div>
+      </div>
+      <div class="order-icp">
+        <strong>Titles:</strong> ${escHtml(o.Titles)}<br>
+        <strong>Industries:</strong> ${escHtml(o.Industries)}<br>
+        <strong>Geography:</strong> ${escHtml(o.Geography)}
+        ${o.UseCase ? `<br><strong>Use case:</strong> ${escHtml(o.UseCase)}` : ''}
+        ${o.Notes ? `<br><strong>Notes:</strong> ${escHtml(o.Notes)}` : ''}
+      </div>
+      <div class="order-actions">
+        <a class="btn btn-outline" href="mailto:${escHtml(o.Email)}">✉ Email customer</a>
+        ${!paid ? `<button class="btn btn-outline" onclick="markPaidManually('${escHtml(o.OrderID)}')">Mark as paid manually</button>` : ''}
+      </div>
+    </div>`;
+  }).join('') + `</div>`;
+}
+
+/* ============================================================
+   MANUAL PAYMENT OVERRIDE
+   For cases where the Flutterwave auto-redirect didn't fire but you've
+   confirmed payment yourself (e.g. checked the Flutterwave dashboard).
+============================================================ */
+async function markPaidManually(orderId) {
+  if (!confirm('Confirm you have verified this payment in your Flutterwave dashboard before marking it paid?')) return;
+  try {
+    await fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      body: JSON.stringify({ action: 'confirmPayment', orderId: orderId, flwTxRef: '(marked manually)', flwTransactionId: '' })
+    });
+    await loadOrders();
+  } catch (err) {
+    alert('Could not update payment status. Check your connection and try again.');
+    console.error(err);
+  }
+}
+
+/* ============================================================
+   CSV EXPORT
+============================================================ */
+function exportCSV() {
+  if (!allOrders.length) { alert('No orders to export.'); return; }
+  const headers = ['Timestamp','OrderID','Plan','Name','Email','Company','Website','Titles','Industries','Geography','CompanySize','UseCase','Notes','PaymentConfirmed','FlwTxRef','FlwTransactionId'];
+  const rows = allOrders.map(o => headers.map(h => '"' + String(o[h] || '').replace(/"/g,'""') + '"'));
+  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+  a.download = 'leadvault_orders_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function configWarningHTML() {
+  return `<div class="config-warning">
+    <h3>⚙️ Backend not connected yet</h3>
+    <p>This admin page needs to be pointed at your Google Apps Script backend before it can show any orders.</p>
+    <p>1. Deploy <code>apps-script-backend.gs</code> as a Web App (see setup instructions inside that file).</p>
+    <p>2. Copy the Web App URL it gives you.</p>
+    <p>3. Paste it into the <code>APPS_SCRIPT_URL</code> constant near the top of this file's &lt;script&gt; section, and make sure <code>ADMIN_SECRET_KEY</code> matches <code>SECRET_KEY</code> in the Apps Script file exactly.</p>
+  </div>`;
+}
+function errorStateHTML(msg) {
+  return `<div class="state-block">
+    <svg class="ic" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+    <h3 style="color:#C0392B;">Couldn't load orders</h3>
+    <p>${escHtml(msg)}</p>
+  </div>`;
+}
+function escHtml(s) {
+  return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtDate(iso) {
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return String(iso);
+  return d.toLocaleString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,2191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="theme-color" content="#ffffff">
+<title>LeadVault™ — Verified B2B Leads, Delivered in 24 Hours | Meer HQ</title>
+<meta name="description" content="LeadVault™ by Meer HQ delivers verified, ICP-targeted B2B prospect lists in 24–72 hours. No subscriptions. 98%+ email accuracy. Starting at $29.99 per order.">
+<meta name="keywords" content="B2B leads, verified leads, lead generation, sales prospecting, buy leads, startup leads, SaaS leads, cold email leads">
+<meta property="og:title" content="LeadVault™ — Verified B2B Leads in 24 Hours">
+<meta property="og:description" content="Get verified, ICP-targeted B2B prospect lists delivered in 24-72 hours. Starting at $29.99.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   DESIGN TOKENS — Pure light mode, full contrast
+============================================================ */
+:root {
+  color-scheme: light only;
+  --bg:          #FFFFFF;
+  --bg-soft:     #F8F8F8;
+  --bg-card:     #FAFAFA;
+  --ink:         #111111;
+  --ink-2:       #2A2A2A;
+  --ink-3:       #555555;
+  --ink-4:       #888888;
+  --orange:      #FF5A1F;
+  --orange-dk:   #E04A12;
+  --orange-lt:   #FFF3EE;
+  --orange-mid:  #FFE0D0;
+  --green:       #16794C;
+  --green-lt:    #ECFDF5;
+  --red:         #C0392B;
+  --red-lt:      #FEF0EE;
+  --border:      #EFEFEF;
+  --border-dk:   #DEDEDE;
+  --shadow-xs:   0 1px 3px rgba(0,0,0,0.07);
+  --shadow-sm:   0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:   0 8px 32px rgba(0,0,0,0.10);
+  --shadow-lg:   0 24px 64px rgba(0,0,0,0.12);
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   20px;
+  --radius-xl:   28px;
+  --maxw:        1160px;
+}
+
+/* ============================================================
+   RESET & BASE
+============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: 'Inter', sans-serif; font-size: 16px;
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+h1,h2,h3,h4,h5 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600; line-height: 1.1; letter-spacing: -0.02em;
+  margin: 0; color: var(--ink);
+}
+p { margin: 0; color: var(--ink-2); }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+ul { margin: 0; padding: 0; list-style: none; }
+button { font-family: 'Inter', sans-serif; cursor: pointer; }
+textarea { resize: vertical; min-height: 80px; }
+
+/* ============================================================
+   LAYOUT
+============================================================ */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+@media (max-width: 768px) { .wrap { padding: 0 20px; } }
+section { padding: 100px 0; }
+@media (max-width: 880px) { section { padding: 72px 0; } }
+@media (max-width: 560px) { section { padding: 56px 0; } }
+
+/* ============================================================
+   TYPOGRAPHY UTILITIES
+============================================================ */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--orange); margin-bottom: 16px;
+}
+.eyebrow::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--orange); display: inline-block;
+}
+.sec-head { margin-bottom: 56px; }
+.sec-head h2 { font-size: clamp(28px, 3.5vw, 42px); margin-bottom: 14px; }
+.sec-head p { font-size: 17px; color: var(--ink-3); max-width: 640px; line-height: 1.65; }
+.sec-head.center { text-align: center; }
+.sec-head.center p { margin: 0 auto; }
+
+/* ============================================================
+   BUTTONS
+============================================================ */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  padding: 13px 24px; border-radius: 999px; font-size: 14.5px; font-weight: 600;
+  border: 1.5px solid transparent; cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+  white-space: nowrap; text-decoration: none;
+}
+.btn-lg { padding: 16px 30px; font-size: 16px; }
+.btn-sm { padding: 9px 18px; font-size: 13px; }
+.btn-primary {
+  background: var(--orange); color: #fff;
+  box-shadow: 0 2px 8px rgba(255,90,31,0.3);
+}
+.btn-primary:hover { background: var(--orange-dk); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,90,31,0.35); }
+.btn-primary:disabled { opacity: 0.65; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-outline {
+  background: transparent; color: var(--ink); border-color: var(--border-dk);
+}
+.btn-outline:hover { border-color: var(--ink); transform: translateY(-1px); }
+.btn-orange-outline {
+  background: transparent; color: var(--orange); border-color: var(--orange);
+}
+.btn-orange-outline:hover { background: var(--orange-lt); }
+
+/* ============================================================
+   NAVIGATION
+============================================================ */
+header {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  border-bottom: 1px solid var(--border);
+}
+.nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.nav-left { display: flex; align-items: center; gap: 40px; }
+.logo {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px;
+  display: flex; align-items: baseline; gap: 0; color: var(--ink);
+}
+.logo .logo-dot { color: var(--orange); }
+.logo .logo-tag {
+  font-family: 'Inter', sans-serif; font-weight: 600; font-size: 11px;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--ink-3); border-left: 1px solid var(--border-dk);
+  padding-left: 10px; margin-left: 10px;
+}
+.nav-links { display: flex; gap: 28px; }
+.nav-links a { font-size: 14px; font-weight: 500; color: var(--ink-3); transition: color 0.15s; }
+.nav-links a:hover { color: var(--ink); }
+.nav-right { display: flex; align-items: center; gap: 10px; }
+@media (max-width: 880px) { .nav-links { display: none; } }
+
+/* ============================================================
+   HERO
+============================================================ */
+.hero { padding: 88px 0 80px; overflow: hidden; position: relative; }
+.hero::before {
+  content: ''; position: absolute; top: -120px; right: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle at 40% 40%, rgba(255,90,31,0.10), transparent 70%);
+  pointer-events: none;
+}
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center; }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 48px; } }
+.hero h1 { font-size: clamp(38px, 5.2vw, 64px); margin-bottom: 20px; }
+.hero h1 .accent { color: var(--orange); }
+.hero-sub { font-size: 18px; color: var(--ink-3); line-height: 1.65; max-width: 500px; margin-bottom: 32px; }
+.hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.hero-trust { display: flex; gap: 20px; flex-wrap: wrap; }
+.hero-trust span {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13.5px; font-weight: 600; color: var(--ink-3);
+}
+.hero-trust .tick { color: var(--green); }
+
+/* Data preview card */
+.data-preview-card {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);
+  overflow: hidden; transform: rotate(0.5deg);
+}
+.dpc-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 20px; background: var(--bg-soft); border-bottom: 1px solid var(--border);
+}
+.dpc-file { display: flex; align-items: center; gap: 8px; font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.dpc-dot { width: 8px; height: 8px; border-radius: 2px; background: var(--orange); }
+.verified-badge {
+  font-size: 11px; font-weight: 700; color: var(--green);
+  background: var(--green-lt); padding: 4px 10px; border-radius: 999px;
+}
+.dpc-table { width: 100%; border-collapse: collapse; }
+.dpc-table th {
+  padding: 10px 16px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--ink-3); background: var(--bg-soft);
+  text-align: left; border-bottom: 1px solid var(--border);
+}
+.dpc-table td {
+  padding: 11px 16px; font-size: 13px; color: var(--ink-2);
+  border-bottom: 1px solid #F5F5F5;
+}
+.dpc-table tr:last-child td { border-bottom: none; }
+.td-name { font-weight: 600; color: var(--ink); }
+.td-blur {
+  display: inline-block; height: 9px; width: 70px; border-radius: 3px;
+  background: repeating-linear-gradient(135deg, #E8E8E8 0, #E8E8E8 3px, #F2F2F2 3px, #F2F2F2 6px);
+}
+.check-green { color: var(--green); }
+.dpc-foot {
+  padding: 12px 20px; background: var(--bg-soft); border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; font-size: 12.5px; color: var(--ink-3); font-weight: 500;
+}
+
+/* ============================================================
+   STAT STRIP
+============================================================ */
+.stat-strip {
+  padding: 44px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.stat-strip .wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; }
+@media (max-width: 720px) { .stat-strip .wrap { grid-template-columns: repeat(2,1fr); gap: 28px; } }
+.stat-item .num {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(24px, 2.8vw, 32px); color: var(--orange); letter-spacing: -0.01em;
+}
+.stat-item .lbl { font-size: 13px; color: var(--ink-3); font-weight: 500; margin-top: 4px; }
+
+/* ============================================================
+   PROBLEM SECTION
+============================================================ */
+.problem-stats-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-bottom: 52px; }
+@media (max-width: 720px) { .problem-stats-grid { grid-template-columns: 1fr; } }
+.prob-stat {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 26px 24px;
+}
+.prob-stat .ps-num {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 32px; color: var(--ink);
+  margin-bottom: 8px;
+}
+.prob-stat .ps-desc { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
+
+.vs-wrapper { display: grid; grid-template-columns: 1fr 48px 1fr; align-items: stretch; }
+@media (max-width: 760px) { .vs-wrapper { grid-template-columns: 1fr; } .vs-divider-col { display: none; } }
+.vs-col { border: 1px solid var(--border); padding: 28px 26px; }
+.vs-col.vs-bad { border-radius: var(--radius-md) 0 0 var(--radius-md); background: #FAFAFA; }
+.vs-col.vs-good { border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--orange-lt); border-color: var(--orange-mid); }
+@media (max-width: 760px) {
+  .vs-col.vs-bad { border-radius: var(--radius-md) var(--radius-md) 0 0; }
+  .vs-col.vs-good { border-radius: 0 0 var(--radius-md) var(--radius-md); border-top: none; }
+}
+.vs-divider-col { display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--ink-2); }
+.vs-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 17px; margin-bottom: 16px; }
+.vs-col.vs-bad .vs-title { color: var(--red); }
+.vs-col.vs-good .vs-title { color: var(--orange-dk); }
+.vs-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--ink-2); padding: 7px 0; }
+.vs-mark { flex-shrink: 0; margin-top: 3px; }
+
+/* ============================================================
+   HOW IT WORKS
+============================================================ */
+.steps-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 14px; }
+@media (max-width: 960px) { .steps-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .steps-grid { grid-template-columns: 1fr; } }
+.step-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 24px 20px;
+}
+.step-num {
+  display: block; font-size: 12.5px; font-weight: 700;
+  color: var(--orange); margin-bottom: 12px;
+}
+.step-card h4 { font-size: 15.5px; margin-bottom: 8px; }
+.step-card p { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+
+/* ============================================================
+   AUDIENCE CARDS
+============================================================ */
+.audience-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+@media (max-width: 900px) { .audience-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .audience-grid { grid-template-columns: 1fr; } }
+.aud-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 24px 22px;
+  transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
+}
+.aud-card:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: var(--shadow-md); }
+.aud-tag { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--orange); margin-bottom: 10px; display: block; }
+.aud-card h4 { font-size: 17px; margin-bottom: 8px; }
+.aud-card p { font-size: 14px; color: var(--ink-3); line-height: 1.55; }
+
+/* ============================================================
+   DELIVERABLES GRID
+============================================================ */
+.deliv-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
+@media (max-width: 900px) { .deliv-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .deliv-grid { grid-template-columns: 1fr; } }
+.deliv-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 20px 18px;
+}
+.deliv-ic {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--orange-lt); color: var(--orange);
+  display: flex; align-items: center; justify-content: center; margin-bottom: 12px;
+}
+.deliv-card h4 { font-size: 14.5px; margin-bottom: 5px; }
+.deliv-card p { font-size: 13px; color: var(--ink-3); }
+
+/* ============================================================
+   COMPARISON TABLE
+============================================================ */
+.comp-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); }
+.comp-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+.comp-table th {
+  padding: 14px 20px; background: var(--bg-soft); text-align: left;
+  font-size: 12.5px; font-weight: 700; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--ink-3); border-bottom: 1px solid var(--border);
+}
+.comp-table td {
+  padding: 14px 20px; font-size: 14.5px; border-bottom: 1px solid var(--border); color: var(--ink-2);
+}
+.comp-table tr:last-child td { border-bottom: none; }
+.comp-table td.bad { color: var(--red); }
+.comp-table td.good { color: var(--green); font-weight: 600; }
+
+/* ============================================================
+   PRICING — 100% light mode, no dark cards
+============================================================ */
+.price-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .price-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; } }
+
+.price-card {
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg); padding: 32px 28px;
+  position: relative; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+.price-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+/* Featured card — orange accent, NOT dark */
+.price-card.featured {
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px var(--orange-lt), var(--shadow-md);
+  transform: scale(1.03);
+}
+.price-card.featured:hover { transform: scale(1.03) translateY(-4px); }
+
+.most-pop-badge {
+  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--orange); color: #fff; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 999px; white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(255,90,31,0.35);
+}
+
+.plan-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--orange); margin-bottom: 16px; }
+.price-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 44px; color: var(--ink); letter-spacing: -0.02em; }
+.price-period { font-size: 14px; color: var(--ink-3); font-weight: 500; margin-bottom: 6px; }
+.price-leads {
+  font-size: 14px; font-weight: 600; color: var(--ink);
+  padding: 12px 0; margin-bottom: 20px;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.price-features { margin-bottom: 24px; }
+.price-features li { display: flex; align-items: flex-start; gap: 9px; font-size: 14px; color: var(--ink-2); padding: 6px 0; }
+.price-features li svg { flex-shrink: 0; margin-top: 3px; color: var(--orange); }
+.price-card .btn { width: 100%; }
+
+.pricing-note { text-align: center; font-size: 13.5px; color: var(--ink-3); margin-top: 32px; }
+.pricing-note strong { color: var(--ink); }
+
+/* ============================================================
+   PROCESS TIMELINE
+============================================================ */
+.tl-list { border-top: 1px solid var(--border); }
+.tl-row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+@media (max-width: 560px) { .tl-row { grid-template-columns: 1fr; gap: 6px; } }
+.tl-time { font-weight: 700; font-size: 13.5px; color: var(--orange); padding-top: 2px; }
+.tl-body h4 { font-size: 16px; margin-bottom: 5px; }
+.tl-body p { font-size: 14.5px; color: var(--ink-3); line-height: 1.55; }
+
+/* ============================================================
+   WHY MEER HQ CARDS
+============================================================ */
+.why-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+@media (max-width: 900px) { .why-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .why-grid { grid-template-columns: 1fr; } }
+.why-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 24px 22px; }
+.why-ic { width: 36px; height: 36px; border-radius: 9px; background: var(--orange-lt); color: var(--orange); display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+.why-card h4 { font-size: 15.5px; margin-bottom: 7px; }
+.why-card p { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+
+/* ============================================================
+   USE CASES
+============================================================ */
+.uc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+@media (max-width: 900px) { .uc-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { .uc-grid { grid-template-columns: 1fr; } }
+.uc-item { padding: 22px 0; border-top: 1px solid var(--border); }
+.uc-item h4 { font-size: 15.5px; margin-bottom: 7px; }
+.uc-item p { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+
+/* ============================================================
+   FOUNDING OFFER — full light mode
+============================================================ */
+.offer-block {
+  background: var(--orange-lt); border: 1.5px solid var(--orange-mid);
+  border-radius: var(--radius-xl); padding: 52px 48px;
+  display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.offer-block::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 300px; height: 300px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,90,31,0.12), transparent 70%);
+}
+@media (max-width: 880px) { .offer-block { grid-template-columns: 1fr; padding: 36px 28px; gap: 32px; } }
+.offer-limited {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,90,31,0.12); color: var(--orange-dk);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+  padding: 6px 14px; border-radius: 999px; margin-bottom: 18px;
+}
+.offer-block h3 { font-size: clamp(24px, 2.8vw, 32px); margin-bottom: 12px; color: var(--ink); }
+.offer-block > div:first-child p { font-size: 15px; color: var(--ink-3); line-height: 1.6; margin-bottom: 24px; }
+.offer-feats { display: grid; grid-template-columns: 1fr 1fr; gap: 9px 18px; margin-bottom: 28px; }
+.offer-feats li { display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--ink-2); font-weight: 500; }
+.offer-feats li svg { color: var(--orange); flex-shrink: 0; }
+.offer-card {
+  background: #fff; border: 1px solid var(--border-dk);
+  border-radius: var(--radius-md); padding: 26px;
+}
+.offer-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 11px 0; border-bottom: 1px solid var(--border); font-size: 13.5px;
+}
+.offer-row:last-child { border-bottom: none; }
+.offer-row span { color: var(--ink-3); }
+.offer-row strong { color: var(--ink); font-weight: 600; }
+
+/* ============================================================
+   CLIENT JOURNEY
+============================================================ */
+.journey-grid { display: flex; flex-direction: column; gap: 0; max-width: 720px; }
+.journey-item { display: grid; grid-template-columns: 44px 1fr; gap: 18px; padding: 18px 0; border-bottom: 1px dashed var(--border); }
+.journey-item:last-child { border-bottom: none; }
+.j-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--orange-lt); color: var(--orange-dk); border: 1.5px solid var(--orange-mid);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 13.5px; flex-shrink: 0;
+}
+.j-body h4 { font-size: 15.5px; margin-bottom: 4px; }
+.j-body p { font-size: 14px; color: var(--ink-3); line-height: 1.5; }
+.quote-pull {
+  margin-top: 44px; padding: 28px 30px;
+  background: #fff; border: 1px solid var(--border);
+  border-left: 3px solid var(--orange); border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+.quote-pull p.qt { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 500; line-height: 1.5; margin-bottom: 12px; color: var(--ink); }
+.quote-pull .qt-by { font-size: 13px; color: var(--ink-3); font-weight: 500; }
+
+/* ============================================================
+   FAQ
+============================================================ */
+.faq-list { border-top: 1px solid var(--border); }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-btn {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 22px 2px; background: none; border: none; cursor: pointer; text-align: left;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 16.5px; color: var(--ink);
+}
+.faq-btn .faq-ic { flex-shrink: 0; color: var(--orange); transition: transform 0.25s; }
+.faq-item.open .faq-ic { transform: rotate(45deg); }
+.faq-ans { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.faq-item.open .faq-ans { max-height: 260px; }
+.faq-ans p { padding: 0 2px 22px; font-size: 15px; color: var(--ink-3); line-height: 1.65; max-width: 760px; }
+
+/* ============================================================
+   FINAL CTA BLOCK
+============================================================ */
+.final-cta-block {
+  text-align: center; background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); padding: 68px 40px; position: relative; overflow: hidden;
+}
+.final-cta-block::after {
+  content: ''; position: absolute; top: -150px; left: 50%; transform: translateX(-50%);
+  width: 500px; height: 350px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,90,31,0.08), transparent 70%);
+  pointer-events: none;
+}
+.final-cta-block h2 { font-size: clamp(28px, 3.8vw, 44px); margin-bottom: 14px; position: relative; }
+.final-cta-block .sub { font-size: 16px; color: var(--ink-3); margin-bottom: 32px; position: relative; }
+.final-stats-row {
+  display: flex; justify-content: center; gap: 48px; margin-top: 48px; flex-wrap: wrap; position: relative;
+}
+.final-stats-row .num { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 26px; color: var(--orange); }
+.final-stats-row .lbl { font-size: 12.5px; color: var(--ink-3); margin-top: 4px; font-weight: 500; }
+
+/* ============================================================
+   FOOTER
+============================================================ */
+footer { border-top: 1px solid var(--border); padding: 52px 0 36px; }
+.footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px; margin-bottom: 44px; }
+@media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; gap: 28px; } }
+.footer-logo { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 12px; color: var(--ink); }
+.footer-logo span { color: var(--orange); }
+.footer-desc { font-size: 14px; color: var(--ink-3); line-height: 1.7; max-width: 300px; }
+.footer-col h5 { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); margin-bottom: 14px; }
+.footer-col ul li { padding: 5px 0; }
+.footer-col ul a { font-size: 14px; color: var(--ink-3); transition: color 0.15s; }
+.footer-col ul a:hover { color: var(--orange); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  padding-top: 24px; border-top: 1px solid var(--border);
+  font-size: 13px; color: var(--ink-3);
+}
+.admin-link { cursor: pointer; transition: color 0.15s; }
+.admin-link:hover { color: var(--orange); }
+
+/* ============================================================
+   PAYMENT REDIRECT BANNER
+============================================================ */
+.payment-banner {
+  display: none; position: sticky; top: 68px; z-index: 190;
+  border-bottom: 1px solid var(--border);
+}
+.payment-banner.show { display: block; animation: bannerIn 0.3s ease; }
+@keyframes bannerIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.payment-banner.success { background: var(--green-lt); border-color: #BEE8D4; }
+.payment-banner.failure { background: var(--red-lt); border-color: #F3C9C2; }
+.payment-banner-inner {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 14px 32px; flex-wrap: wrap;
+}
+@media (max-width: 768px) { .payment-banner-inner { padding: 14px 20px; } }
+.payment-banner-text { display: flex; flex-direction: column; gap: 2px; font-size: 13.5px; }
+.payment-banner.success .payment-banner-text strong { color: var(--green); }
+.payment-banner.failure .payment-banner-text strong { color: var(--red); }
+.payment-banner-text span { color: var(--ink-2); }
+.payment-banner-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+.payment-banner-close {
+  width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.6); color: var(--ink-2); transition: background 0.15s;
+}
+.payment-banner-close:hover { background: rgba(255,255,255,0.95); }
+
+/* ============================================================
+   MOBILE STICKY BAR
+============================================================ */
+.mobile-bar {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 150;
+  padding: 12px 16px; background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(10px); border-top: 1px solid var(--border);
+}
+.mobile-bar .btn { width: 100%; }
+@media (max-width: 720px) { .mobile-bar { display: block; } body { padding-bottom: 72px; } }
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.55s ease, transform 0.55s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============================================================
+   ORDER INTAKE MODAL — 3-step flow
+============================================================ */
+.modal-overlay {
+  display: none; position: fixed; inset: 0; z-index: 500;
+  background: rgba(17,17,17,0.45); backdrop-filter: blur(4px);
+  align-items: center; justify-content: center; padding: 16px;
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: #fff; border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 560px;
+  max-height: 92vh; overflow-y: auto; padding: 36px 40px;
+  animation: modalIn 0.28s ease;
+  position: relative;
+}
+@keyframes modalIn { from { opacity: 0; transform: scale(0.96) translateY(12px); } to { opacity: 1; transform: none; } }
+@media (max-width: 600px) { .modal { padding: 28px 22px; border-radius: var(--radius-lg); } }
+
+.modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--bg-soft); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--ink-3); transition: background 0.15s;
+}
+.modal-close:hover { background: var(--border-dk); }
+
+/* Step indicator */
+.step-indicator {
+  display: flex; align-items: center; gap: 0; margin-bottom: 28px;
+}
+.step-ind-item {
+  display: flex; align-items: center; gap: 0;
+}
+.step-dot {
+  width: 28px; height: 28px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 700;
+  background: var(--border); color: var(--ink-2);
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.step-dot.active { background: var(--orange); color: #fff; }
+.step-dot.done { background: var(--green); color: #fff; }
+.step-label { font-size: 12.5px; font-weight: 600; color: var(--ink-3); margin-left: 7px; }
+.step-label.active { color: var(--ink); }
+.step-connector { flex: 1; height: 1.5px; background: var(--border); margin: 0 10px; min-width: 24px; }
+
+.modal-eyebrow { font-size: 11.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+.modal h3 { font-size: 22px; margin-bottom: 6px; }
+.modal-sub { font-size: 14px; color: var(--ink-3); margin-bottom: 24px; line-height: 1.55; }
+
+/* Plan badge */
+.modal-plan-badge {
+  display: flex; align-items: center; gap: 9px;
+  background: var(--orange-lt); border: 1px solid var(--orange-mid);
+  border-radius: var(--radius-sm); padding: 10px 14px; margin-bottom: 22px;
+  font-size: 13.5px; font-weight: 600; color: var(--orange-dk);
+}
+
+/* Form styles */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 520px) { .form-row { grid-template-columns: 1fr; } }
+.form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.form-group label { font-size: 13px; font-weight: 600; color: var(--ink-2); }
+.req { color: var(--orange); margin-left: 2px; }
+.form-control {
+  padding: 11px 14px; border: 1.5px solid var(--border-dk); border-radius: var(--radius-sm);
+  font-family: 'Inter', sans-serif; font-size: 14px; color: var(--ink);
+  background: #fff; transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.form-control:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,90,31,0.12); }
+.form-control.error { border-color: var(--red); }
+select.form-control { cursor: pointer; }
+textarea.form-control { resize: vertical; min-height: 80px; }
+
+.form-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 24px; gap: 12px; }
+.form-nav-right { display: flex; gap: 10px; }
+.form-note { font-size: 13px; color: var(--ink-3); margin-top: 14px; text-align: center; }
+.form-error-banner {
+  display: none; background: var(--red-lt); border: 1px solid #F3C9C2;
+  color: var(--red); font-size: 13px; font-weight: 500; padding: 11px 14px;
+  border-radius: var(--radius-sm); margin-bottom: 16px;
+}
+.form-error-banner.show { display: block; }
+
+/* Step panels */
+.step-panel { display: none; }
+.step-panel.active { display: block; }
+
+/* Step 3 — Order summary */
+.summary-table { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; margin-bottom: 20px; }
+.summary-row {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 13px 18px; border-bottom: 1px solid var(--border); font-size: 14px;
+}
+.summary-row:last-child { border-bottom: none; }
+.summary-row .sr-label { color: var(--ink-3); font-weight: 500; flex-shrink: 0; margin-right: 16px; }
+.summary-row .sr-val { color: var(--ink); font-weight: 600; text-align: right; }
+.summary-total {
+  background: var(--orange-lt); border: 1px solid var(--orange-mid);
+  border-radius: var(--radius-md); padding: 16px 18px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 22px;
+}
+.summary-total .st-label { font-weight: 700; font-size: 15px; color: var(--ink); }
+.summary-total .st-amount { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; color: var(--orange); }
+
+/* Form success */
+.form-success { display: none; text-align: center; padding: 20px 0; }
+.form-success.show { display: block; }
+.success-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--green-lt); color: var(--green);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; font-size: 24px;
+}
+.form-success h4 { font-size: 20px; margin-bottom: 10px; }
+.form-success p { font-size: 14.5px; color: var(--ink-3); line-height: 1.6; margin-bottom: 10px; }
+.redirect-note { font-size: 13px; color: var(--ink-3); }
+.redirect-note a { color: var(--orange); font-weight: 600; }
+
+/* Loading spinner for submit button */
+.spinner {
+  display: inline-block; width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.4); border-top-color: #fff;
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ============================================================
+   ADMIN DASHBOARD MODAL
+============================================================ */
+.dash-overlay {
+  display: none; position: fixed; inset: 0; z-index: 600;
+  background: rgba(17,17,17,0.5); backdrop-filter: blur(5px);
+  align-items: center; justify-content: center; padding: 16px;
+}
+.dash-overlay.open { display: flex; }
+.dash-modal {
+  background: #fff; border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg); width: 100%; max-width: 860px;
+  max-height: 90vh; overflow: hidden;
+  display: flex; flex-direction: column;
+  animation: modalIn 0.28s ease;
+}
+
+/* Auth screen */
+.dash-auth-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; padding: 56px 40px; text-align: center;
+}
+.dash-auth-wrap h3 { font-size: 22px; margin-bottom: 8px; }
+.dash-auth-wrap p { font-size: 14.5px; color: var(--ink-3); margin-bottom: 28px; }
+.pin-row { display: flex; gap: 10px; justify-content: center; margin-bottom: 12px; }
+.pin-row input {
+  padding: 12px 18px; border: 1.5px solid var(--border-dk);
+  border-radius: var(--radius-sm); font-size: 22px; font-family: 'Inter', monospace;
+  letter-spacing: 0.18em; text-align: center; width: 160px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.pin-row input:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px rgba(255,90,31,0.12); }
+.wrong-pin { font-size: 13px; color: var(--red); margin-top: 8px; display: none; }
+.wrong-pin.show { display: block; }
+.pin-hint { font-size: 13px; color: var(--ink-3); margin-top: 16px; }
+
+/* Dashboard content */
+.dash-header {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 12px; padding: 20px 28px; border-bottom: 1px solid var(--border);
+  background: var(--bg-soft);
+}
+.dash-header h3 { font-size: 19px; }
+.dash-header-right { display: flex; gap: 8px; flex-wrap: wrap; }
+.dash-body { overflow-y: auto; padding: 20px 28px; flex: 1; }
+.dash-empty { text-align: center; padding: 48px 20px; }
+.dash-empty h4 { font-size: 18px; margin-bottom: 8px; }
+.dash-empty p { color: var(--ink-3); font-size: 14.5px; }
+.order-count { font-size: 13px; color: var(--ink-3); margin-bottom: 16px; }
+
+/* Order cards in dashboard */
+.order-card {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: var(--radius-md); padding: 20px 22px; margin-bottom: 14px;
+}
+.order-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+.order-meta h4 { font-size: 15.5px; margin-bottom: 4px; }
+.order-date { font-size: 12.5px; color: var(--ink-3); font-weight: 500; }
+.order-plan-badge {
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;
+  padding: 5px 11px; border-radius: 999px; white-space: nowrap; flex-shrink: 0;
+}
+.badge-starter { background: #EEF2FF; color: #4F46E5; }
+.badge-growth  { background: var(--orange-lt); color: var(--orange-dk); }
+.badge-scale   { background: var(--green-lt); color: var(--green); }
+.order-details { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+@media (max-width: 560px) { .order-details { grid-template-columns: 1fr; } }
+.od-label { font-size: 11.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-3); margin-bottom: 4px; }
+.od-val { font-size: 13.5px; color: var(--ink-2); }
+.order-icp { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 14px 16px; }
+.order-icp .od-val { font-size: 13.5px; line-height: 1.7; }
+.sync-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px;
+}
+.sync-ok { background: var(--green-lt); color: var(--green); }
+.sync-fail { background: var(--red-lt); color: var(--red); }
+
+/* ============================================================
+   PRINT STYLESHEET
+============================================================ */
+@media print {
+  header, .mobile-bar, .modal-overlay, .dash-overlay { display: none !important; }
+  section { padding: 32px 0; page-break-inside: avoid; }
+  .price-card.featured { border: 2px solid var(--orange) !important; }
+  .offer-block { background: #fff !important; border: 1px solid var(--border) !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     NAVIGATION
+============================================================ -->
+<header>
+  <div class="wrap nav">
+    <div class="nav-left">
+      <div class="logo">Meer<span class="logo-dot">HQ</span><span class="logo-tag">LeadVault™</span></div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#problem">Problem</a>
+        <a href="#how">How it works</a>
+        <a href="#deliverables">What you get</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendly.com/wearemeerhq/30min" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Book consultation</a>
+      <button class="btn btn-primary btn-sm" onclick="openOrderModal('starter')">Order now →</button>
+    </div>
+  </div>
+</header>
+
+<!-- ============================================================
+     PAYMENT REDIRECT BANNER
+     Shown when Flutterwave redirects back here after a payment
+     attempt (?status=successful|cancelled|failed&tx_ref=...&transaction_id=...).
+     Requires the Redirect URL to be configured on each Flutterwave
+     Payment Link — see PAYMENT-CONFIRMATION config block in the script.
+============================================================ -->
+<div class="payment-banner" id="paymentBanner" role="status">
+  <div class="wrap payment-banner-inner">
+    <div class="payment-banner-text">
+      <strong id="paymentBannerTitle"></strong>
+      <span id="paymentBannerSub"></span>
+    </div>
+    <div class="payment-banner-actions">
+      <button class="btn btn-sm" id="paymentBannerRetry" style="display:none;" onclick="retryPaymentFromBanner()">Try again →</button>
+      <button class="payment-banner-close" onclick="closePaymentBanner()" aria-label="Dismiss">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     HERO
+============================================================ -->
+<section class="hero" aria-labelledby="hero-heading">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Meer HQ · Customer Acquisition</span>
+      <h1 id="hero-heading">Verified B2B leads,<br>delivered in <span class="accent">24 hours.</span></h1>
+      <p class="hero-sub">LeadVault™ is your on-demand prospecting team. Tell us your ideal customer — we research, verify, and deliver a ready-to-use list so you can focus on closing deals.</p>
+      <div class="hero-ctas">
+        <button class="btn btn-primary btn-lg" onclick="openOrderModal('starter')">Build my prospect list →</button>
+        <a href="https://calendly.com/wearemeerhq/30min" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Book consultation</a>
+      </div>
+      <div class="hero-trust">
+        <span><svg class="tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>No subscription</span>
+        <span><svg class="tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>24-hour delivery</span>
+        <span><svg class="tick" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>98%+ verified data</span>
+      </div>
+    </div>
+
+    <!-- Signature data preview card -->
+    <div class="data-preview-card reveal" aria-hidden="true">
+      <div class="dpc-head">
+        <div class="dpc-file"><span class="dpc-dot"></span>leadvault_export.csv</div>
+        <span class="verified-badge">98%+ verified</span>
+      </div>
+      <table class="dpc-table">
+        <thead><tr><th>Contact</th><th>Company</th><th>Email</th></tr></thead>
+        <tbody>
+          <tr><td class="td-name">Sarah Chen<br><small style="font-weight:400;color:var(--ink-3);">VP Marketing</small></td><td>TechCorp Inc</td><td><svg class="check-green" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> <span class="td-blur"></span></td></tr>
+          <tr><td class="td-name">James Obi<br><small style="font-weight:400;color:var(--ink-3);">Head of Growth</small></td><td>Finova Ltd</td><td><svg class="check-green" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> <span class="td-blur"></span></td></tr>
+          <tr><td class="td-name">Amara Diallo<br><small style="font-weight:400;color:var(--ink-3);">CEO</small></td><td>ScaleUp HQ</td><td><svg class="check-green" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> <span class="td-blur"></span></td></tr>
+          <tr><td class="td-name">Liu Wei<br><small style="font-weight:400;color:var(--ink-3);">Sales Director</small></td><td>CloudBase</td><td><svg class="check-green" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg> <span class="td-blur"></span></td></tr>
+        </tbody>
+      </table>
+      <div class="dpc-foot"><span>500+ leads delivered monthly</span><span>Full list revealed on delivery</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip" aria-label="Key statistics">
+  <div class="wrap">
+    <div class="stat-item"><div class="num">500+</div><div class="lbl">Leads delivered monthly</div></div>
+    <div class="stat-item"><div class="num">98%</div><div class="lbl">Data accuracy rate</div></div>
+    <div class="stat-item"><div class="num">24hrs</div><div class="lbl">Average delivery</div></div>
+    <div class="stat-item"><div class="num">50+</div><div class="lbl">Countries covered</div></div>
+  </div>
+</div>
+
+<!-- ============================================================
+     PROBLEM
+============================================================ -->
+<section id="problem" style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);" aria-labelledby="problem-heading">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2 id="problem-heading">Most businesses don't have a lead problem. They have a prospecting problem.</h2>
+      <p>The real bottleneck isn't leads — it's the time and systems required to find verified, targeted ones.</p>
+    </div>
+    <div class="problem-stats-grid reveal">
+      <div class="prob-stat"><div class="ps-num">65%</div><div class="ps-desc">of sales rep time is spent on non-selling activities</div></div>
+      <div class="prob-stat"><div class="ps-num">4hrs</div><div class="ps-desc">average time founders spend researching prospects every week</div></div>
+      <div class="prob-stat"><div class="ps-num">3×</div><div class="ps-desc">lower reply rates when using unverified or generic data</div></div>
+    </div>
+    <div class="vs-wrapper reveal">
+      <div class="vs-col vs-bad">
+        <div class="vs-title">✕ Manual research</div>
+        <ul class="vs-list">
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Hours of Google searching</li>
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Outdated LinkedIn data</li>
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Unverified emails that bounce</li>
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Sales rep frustration</li>
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Wasted outreach budget</li>
+          <li><span class="vs-mark" style="color:var(--red);">—</span>Low reply rates</li>
+        </ul>
+      </div>
+      <div class="vs-divider-col">VS</div>
+      <div class="vs-col vs-good">
+        <div class="vs-title">✓ LeadVault™</div>
+        <ul class="vs-list">
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Done-for-you research</li>
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>ICP-targeted lists</li>
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Verified business emails</li>
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>24-hour guaranteed delivery</li>
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CSV + Google Sheets ready</li>
+          <li><svg class="vs-mark" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#16794C" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Higher reply rates</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     HOW IT WORKS
+============================================================ -->
+<section id="how" aria-labelledby="how-heading">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">How it works</span>
+      <h2 id="how-heading">The simplest path from prospect to pipeline.</h2>
+      <p>No scraping. No guesswork. No outdated lists. Just clean, verified leads delivered to your inbox.</p>
+    </div>
+    <div class="steps-grid reveal">
+      <div class="step-card"><span class="step-num">Step 01</span><h4>Define your ICP</h4><p>Tell us your ideal customer — industry, title, company size, geography.</p></div>
+      <div class="step-card"><span class="step-num">Step 02</span><h4>We research</h4><p>Our team manually researches prospects matching your exact criteria from verified sources.</p></div>
+      <div class="step-card"><span class="step-num">Step 03</span><h4>We verify</h4><p>Every email is verified using multi-layer tools. No bounces, no invalid contacts.</p></div>
+      <div class="step-card"><span class="step-num">Step 04</span><h4>We organize</h4><p>Formatted into clean CSV & Google Sheets, ready for any outreach tool or CRM.</p></div>
+      <div class="step-card"><span class="step-num">Step 05</span><h4>You start selling</h4><p>Receive your leads in 24hrs and launch outreach immediately.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHO IT'S FOR
+============================================================ -->
+<section style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Who it's for</span>
+      <h2>Built for businesses that sell.</h2>
+      <p>Whether you're a founder, a sales team, or a solo operator — LeadVault works for you.</p>
+    </div>
+    <div class="audience-grid reveal">
+      <div class="aud-card"><span class="aud-tag">Need demos</span><h4>SaaS companies</h4><p>You build great software. Let us fill your calendar with qualified decision-maker prospects.</p></div>
+      <div class="aud-card"><span class="aud-tag">Need clients</span><h4>Agencies</h4><p>Stop pitching cold. Start with a list of decision-makers ready to buy your services.</p></div>
+      <div class="aud-card"><span class="aud-tag">Need hiring managers</span><h4>Recruiters</h4><p>Find the right contacts at companies actively scaling their teams.</p></div>
+      <div class="aud-card"><span class="aud-tag">Need discovery calls</span><h4>Consultants</h4><p>Position yourself in front of the exact clients you want to serve.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHAT YOU RECEIVE
+============================================================ -->
+<section id="deliverables" aria-labelledby="deliv-heading">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">What you receive</span>
+      <h2 id="deliv-heading">Every lead. Fully verified.</h2>
+      <p>Each prospect comes complete — no missing fields, no guesswork, ready for outreach the same day it's delivered.</p>
+    </div>
+    <div class="deliv-grid reveal">
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/></svg></div><h4>Contact name</h4><p>First and last name of the prospect.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div><h4>Job title</h4><p>Their exact role at the company.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h4>Company</h4><p>Company name and size details.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/><path d="m22 6-10 7L2 6"/></svg></div><h4>Verified email</h4><p>Business email, verified deliverable.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><h4>LinkedIn profile</h4><p>Direct link to their LinkedIn page.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div><h4>Website</h4><p>Company website URL.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg></div><h4>Industry</h4><p>Industry vertical and sub-sector.</p></div>
+      <div class="deliv-card"><div class="deliv-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><h4>Location</h4><p>City, country, and region.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     COMPARISON TABLE
+============================================================ -->
+<section style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Product comparison</span>
+      <h2>LeadVault vs the alternatives.</h2>
+    </div>
+    <div class="comp-wrap reveal">
+      <table class="comp-table" aria-label="Comparison of LeadVault against alternatives">
+        <thead><tr><th>Feature</th><th>Others</th><th>LeadVault™</th></tr></thead>
+        <tbody>
+          <tr><td>Data type</td><td class="bad">✕ Generic lists</td><td class="good">✓ Custom-built for your ICP</td></tr>
+          <tr><td>Research method</td><td class="bad">✕ DIY / self-serve</td><td class="good">✓ Done for you</td></tr>
+          <tr><td>Targeting</td><td class="bad">✕ Random / broad data</td><td class="good">✓ ICP-focused targeting</td></tr>
+          <tr><td>Quality</td><td class="bad">✕ Raw export, needs cleaning</td><td class="good">✓ Manually QA'd before delivery</td></tr>
+          <tr><td>Delivery speed</td><td class="bad">✕ Varies / instant bulk dump</td><td class="good">✓ Guaranteed 24hrs</td></tr>
+          <tr><td>Pricing model</td><td class="bad">✕ Monthly subscription</td><td class="good">✓ Pay per order, no contracts</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PRICING
+============================================================ -->
+<section id="pricing" aria-labelledby="pricing-heading">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2 id="pricing-heading">Simple, transparent pricing.</h2>
+      <p>No subscriptions. No contracts. Pay per order — start with exactly what you need.</p>
+    </div>
+    <div class="price-grid reveal">
+
+      <!-- Starter -->
+      <div class="price-card">
+        <div class="plan-name">Starter</div>
+        <div class="price-amount">$29.99</div>
+        <div class="price-period">per order</div>
+        <div class="price-leads">100 verified leads · 24hr delivery</div>
+        <ul class="price-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>100 verified leads</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>24-hour delivery</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CSV export</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Google Sheet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Email support</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openOrderModal('starter')">Order Starter →</button>
+      </div>
+
+      <!-- Growth (featured) -->
+      <div class="price-card featured">
+        <span class="most-pop-badge">Most popular</span>
+        <div class="plan-name">Growth</div>
+        <div class="price-amount">$59.99</div>
+        <div class="price-period">per order</div>
+        <div class="price-leads">250 verified leads · 48hr delivery</div>
+        <ul class="price-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>250 verified leads</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>48-hour delivery</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CSV export</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Google Sheet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority research</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority support</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openOrderModal('growth')">Order Growth →</button>
+      </div>
+
+      <!-- Scale -->
+      <div class="price-card">
+        <div class="plan-name">Scale</div>
+        <div class="price-amount">$119.99</div>
+        <div class="price-period">per order</div>
+        <div class="price-leads">500 verified leads · 72hr delivery</div>
+        <ul class="price-features">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>500 verified leads</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>72-hour delivery</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>CSV export</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Google Sheet</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority research</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Dedicated manager</li>
+        </ul>
+        <button class="btn btn-outline" onclick="openOrderModal('scale')">Order Scale →</button>
+      </div>
+
+    </div>
+    <p class="pricing-note reveal">Launch pricing for <strong>first 25 customers</strong>. Rush delivery available on request. Questions? <a href="mailto:contact@meerhq.io" style="color:var(--orange);font-weight:600;">contact@meerhq.io</a></p>
+  </div>
+</section>
+
+<!-- ============================================================
+     PROCESS TIMELINE
+============================================================ -->
+<section style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Our process</span>
+      <h2>From order to delivery in 24 hours.</h2>
+    </div>
+    <div class="tl-list reveal">
+      <div class="tl-row"><div class="tl-time">0–5 min</div><div class="tl-body"><h4>Order placed</h4><p>You select your package and complete the ICP intake form.</p></div></div>
+      <div class="tl-row"><div class="tl-time">~1 hour</div><div class="tl-body"><h4>ICP review</h4><p>We review your ideal customer profile and confirm the research brief.</p></div></div>
+      <div class="tl-row"><div class="tl-time">4–20 hours</div><div class="tl-body"><h4>Research & verify</h4><p>Manual research from LinkedIn, databases, and industry directories — every email verified.</p></div></div>
+      <div class="tl-row"><div class="tl-time">1–2 hours</div><div class="tl-body"><h4>Quality check</h4><p>Human QA review of every row to ensure accuracy and completeness.</p></div></div>
+      <div class="tl-row"><div class="tl-time">By 24hrs</div><div class="tl-body"><h4>Delivery</h4><p>CSV and Google Sheet delivered directly to your inbox, ready to import.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY LEADVAULT
+============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why teams switch</span>
+      <h2>Six reasons businesses choose LeadVault.</h2>
+    </div>
+    <div class="why-grid reveal">
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><h4>24-hour delivery</h4><p>Leads in your inbox within 24 hours of ordering. No waiting for a bulk database dump.</p></div>
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="m18.5 2.5 3 3L12 15l-4 1 1-4Z"/></svg></div><h4>Custom research</h4><p>Every list is built specifically for your ICP. No recycled or shared databases.</p></div>
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg></div><h4>98%+ verified</h4><p>Every email verified using multi-layer tools before delivery. We replace any that fail.</p></div>
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h4>CSV + Google Sheets</h4><p>Ready to import into any email tool, CRM, or outreach platform immediately.</p></div>
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><h4>No subscription</h4><p>Pay per order. No monthly fees, no contracts, no lock-in. Order when you need it.</p></div>
+      <div class="why-card"><div class="why-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/></svg></div><h4>Same-day outreach</h4><p>Structured, clean, and formatted so you can start sending the same day you receive it.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     USE CASES
+============================================================ -->
+<section style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Use cases</span>
+      <h2>One product. Endless applications.</h2>
+    </div>
+    <div class="uc-grid reveal">
+      <div class="uc-item"><h4>Cold email</h4><p>Build hyper-targeted cold email lists with verified contacts, ready for Instantly or Lemlist.</p></div>
+      <div class="uc-item"><h4>LinkedIn outreach</h4><p>Find LinkedIn profiles of exact decision-makers to connect and message directly.</p></div>
+      <div class="uc-item"><h4>Sales teams</h4><p>Equip reps with fresh, custom lead lists every week to hit quota consistently.</p></div>
+      <div class="uc-item"><h4>Recruitment</h4><p>Source hiring managers and talent leads at companies actively scaling their teams.</p></div>
+      <div class="uc-item"><h4>Partnerships</h4><p>Find the right people to pitch co-marketing, integrations, or channel partnerships.</p></div>
+      <div class="uc-item"><h4>Market expansion</h4><p>Explore new verticals, geographies, or niches with targeted lists built for that segment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOUNDING OFFER — full light mode
+============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="offer-block reveal">
+      <div>
+        <span class="offer-limited">⚡ Limited · first 25 customers only</span>
+        <h3>Founding customer offer.</h3>
+        <p>Exclusive benefits for the first 25 customers who order LeadVault — priority delivery, bonus leads, and a lifetime discount on every future order.</p>
+        <ul class="offer-feats">
+          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Priority delivery</li>
+          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>20 bonus leads</li>
+          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Lifetime 10% discount</li>
+          <li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>Free ICP consultation</li>
+        </ul>
+        <button class="btn btn-primary" onclick="openOrderModal('starter')">Claim founding offer →</button>
+      </div>
+      <div class="offer-card">
+        <div class="offer-row"><span>Priority over regular orders</span><strong>✓ Included</strong></div>
+        <div class="offer-row"><span>Free ICP consultation call</span><strong>✓ Included</strong></div>
+        <div class="offer-row"><span>20 extra verified leads</span><strong>worth $29.99</strong></div>
+        <div class="offer-row"><span>Ongoing order discount</span><strong>10% every order</strong></div>
+        <div class="offer-row"><span>Direct team access</span><strong>✓ Included</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLIENT JOURNEY
+============================================================ -->
+<section style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Client journey</span>
+      <h2>From order to outreach in six steps.</h2>
+    </div>
+    <div class="journey-grid reveal">
+      <div class="journey-item"><div class="j-num">1</div><div class="j-body"><h4>Choose package</h4><p>Select the lead count that fits your current outreach goal.</p></div></div>
+      <div class="journey-item"><div class="j-num">2</div><div class="j-body"><h4>Complete ICP form</h4><p>Fill out the intake form with your target industry, titles, geography, and ICP brief.</p></div></div>
+      <div class="journey-item"><div class="j-num">3</div><div class="j-body"><h4>Payment & confirmation</h4><p>Complete payment and receive an email confirmation with your delivery ETA.</p></div></div>
+      <div class="journey-item"><div class="j-num">4</div><div class="j-body"><h4>Research begins</h4><p>Our team starts manual research and verification immediately after confirmation.</p></div></div>
+      <div class="journey-item"><div class="j-num">5</div><div class="j-body"><h4>Delivery</h4><p>Receive your verified CSV and Google Sheet link directly in your inbox.</p></div></div>
+      <div class="journey-item"><div class="j-num">6</div><div class="j-body"><h4>Start outreach</h4><p>Import to your email tool or CRM and start sending. Same day.</p></div></div>
+    </div>
+    <div class="quote-pull reveal" style="max-width:680px; margin-top:44px;">
+      <p class="qt">"LeadVault saved our team 10+ hours per week. The quality is exceptional — every contact was verified and ready to use."</p>
+      <p class="qt-by">— Early access customer, B2B SaaS company</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     WHY MEER HQ
+============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Why Meer HQ</span>
+      <h2>We don't sell marketing. We build acquisition systems.</h2>
+      <p>Every LeadVault order is customized around your business — designed to help you spend less time researching and more time selling.</p>
+    </div>
+    <div class="why-grid reveal" style="grid-template-columns:repeat(4,1fr);">
+      <div class="why-card"><h4>ICP-first thinking</h4><p>We build pipelines designed around your exact ideal customer profile.</p></div>
+      <div class="why-card"><h4>Speed with quality</h4><p>24hr turnaround without compromising accuracy. 98% verified, always.</p></div>
+      <div class="why-card"><h4>Partner, not vendor</h4><p>Human oversight and ICP review on every single order.</p></div>
+      <div class="why-card"><h4>Results-oriented</h4><p>We measure success by your reply rates and pipeline, not just leads delivered.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+============================================================ -->
+<section id="faq" style="background:var(--bg-soft); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="wrap" style="max-width:820px;">
+    <div class="sec-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Got questions? We have answers.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item open">
+        <button class="faq-btn" aria-expanded="true"><span>How accurate are the leads?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>We guarantee 98%+ email deliverability. Every email goes through multi-layer verification before delivery. If you receive unverifiable emails, we replace them free of charge.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false"><span>Can I choose specific industries?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>Yes. During onboarding you specify your target industries, verticals, and sub-sectors. We research exclusively within your ICP parameters.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false"><span>Can I request specific countries or regions?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>Absolutely. You can specify countries, cities, or regions, and exclude certain geographies. We deliver globally across 50+ countries.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false"><span>How fast is delivery?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>Starter orders are delivered within 24 hours. Growth orders within 48 hours. Scale orders within 72 hours. Rush delivery is available on request.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false"><span>What format do I receive the leads in?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>You receive both a CSV file (importable into any CRM or email tool) and a Google Sheet link for easy access and sharing with your team.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-btn" aria-expanded="false"><span>Is there a contract or subscription?</span><svg class="faq-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg></button>
+        <div class="faq-ans"><p>No contracts, no subscriptions. LeadVault is a pay-per-order service. You order when you need leads, and there's no recurring commitment.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FINAL CTA
+============================================================ -->
+<section>
+  <div class="wrap">
+    <div class="final-cta-block reveal">
+      <span class="eyebrow" style="justify-content:center;">Ready to start?</span>
+      <h2>Ready to find your next customer?</h2>
+      <p class="sub">100 verified leads · delivered in 24 hours · starting at $29.99</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; position:relative;">
+        <button class="btn btn-primary btn-lg" onclick="openOrderModal('starter')">Build my prospect list →</button>
+        <a href="https://calendly.com/wearemeerhq/30min" target="_blank" rel="noopener" class="btn btn-outline btn-lg">Book consultation</a>
+      </div>
+      <div class="final-stats-row">
+        <div><div class="num">24hrs</div><div class="lbl">Average delivery</div></div>
+        <div><div class="num">98%+</div><div class="lbl">Email accuracy</div></div>
+        <div><div class="num">$29.99</div><div class="lbl">Starting price</div></div>
+        <div><div class="num">500+</div><div class="lbl">Leads delivered</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+============================================================ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Meer<span>HQ</span></div>
+        <p class="footer-desc">Your customer acquisition partner. We build growth systems for startups and small businesses — not marketing campaigns.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Get started</h5>
+        <ul>
+          <li><a href="#pricing" onclick="openOrderModal('starter')">Order online</a></li>
+          <li><a href="https://calendly.com/wearemeerhq/30min" target="_blank" rel="noopener">Book a call</a></li>
+          <li><a href="mailto:contact@meerhq.io">Send a message</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="mailto:info@meerhq.io">info@meerhq.io</a></li>
+          <li><a href="https://www.meerhq.io" target="_blank" rel="noopener">www.meerhq.io</a></li>
+          <li><a href="https://linkedin.com/company/meer-hq" target="_blank" rel="noopener">LinkedIn · Meer HQ</a></li>
+          <li><a href="https://instagram.com/meerhq.io" target="_blank" rel="noopener">Instagram · @meerhq.io</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Meer HQ. All rights reserved. LeadVault™ is a product of Meer HQ.</span>
+      <span><a class="admin-link" onclick="openDash()" role="button" tabindex="0">Admin ↗</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile sticky bar -->
+<div class="mobile-bar">
+  <button class="btn btn-primary" onclick="openOrderModal('starter')">Order LeadVault — from $29.99</button>
+</div>
+
+<!-- ============================================================
+     ORDER INTAKE MODAL — 3-step flow
+     Step 1: Choose package
+     Step 2: ICP details
+     Step 3: Summary + pay
+============================================================ -->
+<div class="modal-overlay" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal">
+    <button class="modal-close" onclick="closeOrderModal()" aria-label="Close dialog">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+
+    <!-- Step indicator -->
+    <div class="step-indicator" id="stepIndicator">
+      <div class="step-ind-item">
+        <div class="step-dot active" id="sd1">1</div>
+        <span class="step-label active" id="sl1">Package</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-ind-item">
+        <div class="step-dot" id="sd2">2</div>
+        <span class="step-label" id="sl2">Your ICP</span>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step-ind-item">
+        <div class="step-dot" id="sd3">3</div>
+        <span class="step-label" id="sl3">Confirm</span>
+      </div>
+    </div>
+
+    <!-- STEP 1 — Choose Package -->
+    <div class="step-panel active" id="step1">
+      <div class="modal-eyebrow">LeadVault™ Order</div>
+      <h3 id="modal-title">Choose your package.</h3>
+      <p class="modal-sub">Select the lead count that fits your current outreach goal. You can always order again.</p>
+
+      <div style="display:flex; flex-direction:column; gap:12px; margin-bottom:24px;">
+        <label id="pkg-starter" class="pkg-option" onclick="selectPkg('starter')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1.5px solid var(--border-dk);border-radius:var(--radius-md);cursor:pointer;transition:border-color .15s,background .15s;">
+          <div>
+            <div style="font-weight:700;font-size:15px;margin-bottom:3px;">Starter <span style="color:var(--orange);font-size:13px;font-weight:700;">$29.99</span></div>
+            <div style="font-size:13px;color:var(--ink-3);">100 verified leads · 24hr delivery</div>
+          </div>
+          <div id="pk-starter" style="width:18px;height:18px;border-radius:50%;border:2px solid var(--border-dk);flex-shrink:0;transition:all .15s;"></div>
+        </label>
+        <label id="pkg-growth" class="pkg-option" onclick="selectPkg('growth')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1.5px solid var(--orange);background:var(--orange-lt);border-radius:var(--radius-md);cursor:pointer;transition:border-color .15s,background .15s;">
+          <div>
+            <div style="font-weight:700;font-size:15px;margin-bottom:3px;">Growth <span style="color:var(--orange);font-size:13px;font-weight:700;">$59.99</span> <span style="font-size:10.5px;background:var(--orange);color:#fff;padding:2px 8px;border-radius:999px;margin-left:4px;font-weight:700;">POPULAR</span></div>
+            <div style="font-size:13px;color:var(--ink-3);">250 verified leads · 48hr delivery</div>
+          </div>
+          <div id="pk-growth" style="width:18px;height:18px;border-radius:50%;border:2px solid var(--orange);background:var(--orange);flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+        </label>
+        <label id="pkg-scale" class="pkg-option" onclick="selectPkg('scale')" style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border:1.5px solid var(--border-dk);border-radius:var(--radius-md);cursor:pointer;transition:border-color .15s,background .15s;">
+          <div>
+            <div style="font-weight:700;font-size:15px;margin-bottom:3px;">Scale <span style="color:var(--orange);font-size:13px;font-weight:700;">$119.99</span></div>
+            <div style="font-size:13px;color:var(--ink-3);">500 verified leads · 72hr delivery</div>
+          </div>
+          <div id="pk-scale" style="width:18px;height:18px;border-radius:50%;border:2px solid var(--border-dk);flex-shrink:0;transition:all .15s;"></div>
+        </label>
+      </div>
+
+      <div class="form-nav" style="justify-content:flex-end;">
+        <button class="btn btn-primary" onclick="goStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 — ICP Details -->
+    <div class="step-panel" id="step2">
+      <div class="modal-eyebrow">Step 2 of 3</div>
+      <h3>Tell us who you want to reach.</h3>
+      <p class="modal-sub">Fill in your ideal customer profile. Our team researches prospects that match exactly what you need.</p>
+
+      <div id="step2PlanBadge" class="modal-plan-badge">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/></svg>
+        <span id="badgeText">Growth — $59.99 · 250 leads · 48hr delivery</span>
+      </div>
+
+      <form id="icpForm" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f_name">Full name<span class="req">*</span></label>
+            <input class="form-control" type="text" id="f_name" placeholder="Jane Smith" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="f_email">Business email<span class="req">*</span></label>
+            <input class="form-control" type="email" id="f_email" placeholder="jane@company.com" required autocomplete="email">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f_company">Company name<span class="req">*</span></label>
+            <input class="form-control" type="text" id="f_company" placeholder="Your company" required autocomplete="organization">
+          </div>
+          <div class="form-group">
+            <label for="f_website">Website</label>
+            <input class="form-control" type="url" id="f_website" placeholder="https://yourcompany.com" autocomplete="url">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f_titles">Target job titles<span class="req">*</span></label>
+          <input class="form-control" type="text" id="f_titles" placeholder="e.g. Founder, Head of Growth, Marketing Director" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f_industries">Target industries<span class="req">*</span></label>
+            <input class="form-control" type="text" id="f_industries" placeholder="e.g. SaaS, Fintech, E-commerce" required>
+          </div>
+          <div class="form-group">
+            <label for="f_geo">Countries / regions<span class="req">*</span></label>
+            <input class="form-control" type="text" id="f_geo" placeholder="e.g. US, UK, Canada" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="f_size">Company size preference</label>
+            <select class="form-control" id="f_size">
+              <option value="">Any size</option>
+              <option>1–10 employees</option>
+              <option>11–50 employees</option>
+              <option>51–200 employees</option>
+              <option>201–500 employees</option>
+              <option>500+ employees</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f_usecase">Primary use case</label>
+            <select class="form-control" id="f_usecase">
+              <option value="">Select one</option>
+              <option>Cold email outreach</option>
+              <option>LinkedIn outreach</option>
+              <option>Sales team prospecting</option>
+              <option>Recruitment</option>
+              <option>Partnership outreach</option>
+              <option>Market research</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="f_notes">Additional ICP details</label>
+          <textarea class="form-control" id="f_notes" placeholder="Tell us anything else about your ideal customer — tech stack, funding stage, keywords, must-haves or exclusions…"></textarea>
+        </div>
+      </form>
+
+      <div class="form-nav">
+        <button class="btn btn-outline" onclick="goStep(1)">← Back</button>
+        <button class="btn btn-primary" onclick="validateAndGoStep3()">Review order →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 — Summary & Payment -->
+    <div class="step-panel" id="step3">
+      <div class="modal-eyebrow">Step 3 of 3</div>
+      <h3>Review & confirm.</h3>
+      <p class="modal-sub">Check your order details before proceeding to payment.</p>
+
+      <div class="form-error-banner" id="submitErrorBanner">We couldn't reach our server, but your order was saved locally and you can still proceed to payment. We'll follow up by email.</div>
+
+      <div class="summary-table" id="summaryTable">
+        <!-- Populated by JS -->
+      </div>
+      <div class="summary-total">
+        <span class="st-label">Total</span>
+        <span class="st-amount" id="summaryTotal">$59.99</span>
+      </div>
+
+      <div class="form-nav">
+        <button class="btn btn-outline" onclick="goStep(2)" id="editIcpBtn">← Edit ICP</button>
+        <button class="btn btn-primary btn-lg" onclick="submitOrder()" id="payNowBtn">Pay now →</button>
+      </div>
+      <p class="form-note">You'll be redirected to our secure Flutterwave payment page. Your ICP brief is emailed to our team immediately.</p>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h4>Order details saved!</h4>
+      <p>Your ICP brief has been sent to our team. You're now being redirected to complete payment. Once payment is confirmed, our team will start research within the hour.</p>
+      <p class="redirect-note">↗ Redirecting you to payment… If not redirected, <a id="manualPayLink" href="#">click here</a>.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     ADMIN DASHBOARD MODAL
+============================================================ -->
+<div class="dash-overlay" id="dashOverlay" role="dialog" aria-modal="true" aria-labelledby="dash-title">
+  <div class="dash-modal">
+
+    <!-- Auth -->
+    <div id="dashAuth">
+      <div class="dash-auth-wrap">
+        <div style="width:48px;height:48px;border-radius:14px;background:var(--orange-lt);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h3>Admin Access</h3>
+        <p>Enter your admin PIN to view LeadVault order submissions.</p>
+        <div class="pin-row">
+          <input type="password" id="pinInput" maxlength="6" placeholder="••••" autocomplete="off" inputmode="numeric">
+          <button class="btn btn-primary" onclick="checkPin()">Enter</button>
+        </div>
+        <p class="wrong-pin" id="wrongPin">Incorrect PIN. Please try again.</p>
+        <p class="pin-hint">Default PIN: <strong>2026</strong></p>
+        <button class="btn btn-outline btn-sm" style="margin-top:16px;" onclick="closeDash()">Cancel</button>
+      </div>
+    </div>
+
+    <!-- Dashboard content -->
+    <div id="dashContent" style="display:none; flex-direction:column; height:100%; overflow:hidden;">
+      <div class="dash-header">
+        <div>
+          <h3 id="dash-title">LeadVault™ Orders</h3>
+          <p style="font-size:13px;color:var(--ink-3);margin-top:2px;" id="dashSubtitle">Quick view — this device only. For all orders, use "Full admin" →</p>
+        </div>
+        <div class="dash-header-right">
+          <a class="btn btn-outline btn-sm" href="admin.html" target="_blank" rel="noopener">↗ Full admin (all devices)</a>
+          <button class="btn btn-outline btn-sm" onclick="exportCSV()">↓ Export CSV</button>
+          <button class="btn btn-outline btn-sm" onclick="clearOrders()" style="color:var(--red);border-color:var(--red);">Clear all</button>
+          <button class="btn btn-primary btn-sm" onclick="closeDash()">Close</button>
+        </div>
+      </div>
+      <div class="dash-body" id="dashOrders"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+============================================================ -->
+<script>
+/* ============================================================
+   CONFIG
+============================================================ */
+const PAYMENT_LINKS = {
+  starter: 'https://flutterwave.com/pay/leadvault-starter',
+  growth:  'https://flutterwave.com/pay/leadvault-growth',
+  scale:   'https://flutterwave.com/pay/leadvault-scale'
+};
+const PLAN_META = {
+  starter: { label: 'Starter', price: '$29.99', leads: '100 leads', delivery: '24hr delivery' },
+  growth:  { label: 'Growth',  price: '$59.99', leads: '250 leads', delivery: '48hr delivery' },
+  scale:   { label: 'Scale',   price: '$119.99', leads: '500 leads', delivery: '72hr delivery' }
+};
+const ADMIN_PIN = '2026'; // ← change to your preferred PIN
+
+/* Email-on-submit config.
+   Uses FormSubmit.co — a free, no-signup form backend that emails
+   whoever owns the inbox below whenever a POST hits this endpoint.
+   ONE-TIME SETUP: the very first submission triggers an activation
+   email from FormSubmit to contact@meerhq.io — click "Confirm" in that
+   email once, and every submission after that is delivered automatically. */
+const NOTIFY_EMAIL = 'contact@meerhq.io';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
+
+/* Cross-device order backend (Google Apps Script + Google Sheets).
+   See apps-script-backend.gs for the code to deploy, and admin.html for
+   the dashboard that reads from it. Fill these in after deploying —
+   until then, orders still work via email + this-device-only cache,
+   they just won't show up in admin.html. */
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9wNLSzxSGCKl5L9m3j5UqXlUVgSXg6uLMCUO1NOp3XRQ2_XIIwXcV5sCPM2m5TOt_bw/exec';
+const SHEET_BACKEND_CONFIGURED = APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1;
+
+/* ============================================================
+   PAYMENT CONFIRMATION — REQUIRES ONE-TIME SETUP IN FLUTTERWAVE
+   ============================================================
+   Flutterwave can redirect customers to a page after they pay, appending
+   ?status=successful&tx_ref=...&transaction_id=... to the URL.
+
+   RECOMMENDED: point Flutterwave's Redirect URL at payment-confirmed.html
+   (a dedicated, focused confirmation page — see that file) rather than
+   back here. This page (leadvault-landing-page.html) still has its own
+   copy of this same handling below as a fallback, in case the Redirect
+   URL ever points here instead — either way the customer gets a clear
+   confirmation and contact@meerhq.io gets a SEPARATE "payment confirmed"
+   email, distinct from the "order submitted" email sent earlier.
+
+   THIS ONLY WORKS IF a Redirect URL is set on each Flutterwave Payment
+   Link, pointing to wherever payment-confirmed.html is actually hosted:
+     Flutterwave Dashboard → Payments → Payment Links → [select link]
+     → Edit / "Show additional details" → Redirect URL
+     → set to e.g. https://www.meerhq.io/payment-confirmed.html
+   Do this for all three links (Starter, Growth, Scale). Without it,
+   Flutterwave never sends the customer anywhere special, and none of
+   this confirmation logic ever runs.
+
+   IMPORTANT: this is a convenience signal, not cryptographic proof of
+   payment — there's no backend here to verify the transaction against
+   Flutterwave's servers, so a determined bad actor could in theory craft
+   a URL that fakes a success message. Always cross-check the actual
+   Flutterwave dashboard/bank balance before starting fulfillment on an
+   order. A tamper-proof version requires a small backend + Flutterwave
+   webhook — ask if you want help setting that up later.
+============================================================ */
+
+/* ============================================================
+   PAYMENT REDIRECT HANDLING
+   Runs on every page load. If Flutterwave sent the customer back here
+   with a status param (requires the Redirect URL setup described above),
+   show the appropriate banner, update the local order cache, and — for
+   a successful payment — send the admin a confirmation email.
+============================================================ */
+function showPaymentBanner(type, title, sub, showRetry) {
+  const banner = document.getElementById('paymentBanner');
+  banner.className = 'payment-banner show ' + type;
+  document.getElementById('paymentBannerTitle').textContent = title;
+  document.getElementById('paymentBannerSub').textContent = sub;
+  document.getElementById('paymentBannerRetry').style.display = showRetry ? 'inline-flex' : 'none';
+}
+function closePaymentBanner() {
+  document.getElementById('paymentBanner').classList.remove('show');
+}
+let retryPlanFromBanner = 'growth';
+function retryPaymentFromBanner() {
+  closePaymentBanner();
+  openOrderModal(retryPlanFromBanner);
+}
+
+async function sendPaymentConfirmationEmail(order, txRef, transactionId) {
+  const payload = {
+    _subject: `✅ PAYMENT CONFIRMED — Order ${order ? order.id : txRef}`,
+    Order_ID: order ? order.id : '(not matched locally — check Flutterwave dashboard)',
+    Flutterwave_tx_ref: txRef || '—',
+    Flutterwave_transaction_id: transactionId || '—',
+    Plan: order ? (PLAN_META[order.plan] ? PLAN_META[order.plan].label + ' — ' + PLAN_META[order.plan].price : order.plan) : '—',
+    Customer_Name: order ? order.name : '—',
+    Customer_Email: order ? order.email : '—',
+    Company: order ? order.company : '—',
+    Note: 'This confirms PAYMENT was completed via Flutterwave. Cross-check your Flutterwave dashboard before starting fulfillment.',
+    _subject_prefix: '',
+    _template: 'table',
+    _captcha: 'false'
+  };
+  const body = new URLSearchParams(payload).toString();
+  try {
+    await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
+      body: body
+    });
+  } catch (err) {
+    console.error('Payment confirmation email failed to send:', err);
+    // Non-fatal — the banner and local cache update already happened,
+    // so the info isn't lost even if this specific email fails.
+  }
+}
+
+function handlePaymentRedirect() {
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status');
+  if (!status) return; // Not a Flutterwave redirect — nothing to do.
+
+  const txRef = params.get('tx_ref');
+  const transactionId = params.get('transaction_id');
+
+  let pendingOrderId = null;
+  try { pendingOrderId = localStorage.getItem('leadvault_pending_order'); } catch (err) { console.error(err); }
+
+  let matchedOrder = null;
+  if (pendingOrderId) {
+    try {
+      const orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+      const idx = orders.findIndex(o => o.id === pendingOrderId);
+      if (idx !== -1) {
+        matchedOrder = orders[idx];
+        if (status === 'successful') {
+          orders[idx]._paymentConfirmed = true;
+          orders[idx]._flwTxRef = txRef;
+          orders[idx]._flwTransactionId = transactionId;
+        }
+        localStorage.setItem('leadvault_orders', JSON.stringify(orders));
+      }
+    } catch (err) {
+      console.error('Could not update local order with payment status:', err);
+    }
+  }
+
+  if (status === 'successful') {
+    showPaymentBanner(
+      'success',
+      'Payment confirmed ✅',
+      matchedOrder
+        ? `Order ${matchedOrder.id} — we've notified the team and will start research shortly.`
+        : `Reference ${txRef || transactionId || ''} — we've notified the team. If you have questions, email contact@meerhq.io.`,
+      false
+    );
+    sendPaymentConfirmationEmail(matchedOrder, txRef, transactionId);
+    if (SHEET_BACKEND_CONFIGURED && matchedOrder) {
+      fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify({ action: 'confirmPayment', orderId: matchedOrder.id, flwTxRef: txRef, flwTransactionId: transactionId })
+      }).catch(err => console.error('Could not sync payment confirmation to backend sheet:', err));
+    }
+    try { localStorage.removeItem('leadvault_pending_order'); } catch (err) { console.error(err); }
+  } else {
+    // 'cancelled', 'failed', or any other non-success status Flutterwave sends.
+    retryPlanFromBanner = matchedOrder ? matchedOrder.plan : 'growth';
+    showPaymentBanner(
+      'failure',
+      "Payment wasn't completed",
+      "No charge went through — you can try again whenever you're ready.",
+      true
+    );
+  }
+
+  // Strip the query string so refreshing the page doesn't re-trigger this.
+  const cleanUrl = window.location.pathname + window.location.hash;
+  window.history.replaceState(null, '', cleanUrl);
+}
+handlePaymentRedirect();
+
+/* If arriving from payment-confirmed.html's "Try again" link
+   (?retry=starter|growth|scale), reopen the order modal on that plan. */
+(function handleRetryParam() {
+  const params = new URLSearchParams(window.location.search);
+  const retryPlan = params.get('retry');
+  if (retryPlan && PLAN_META[retryPlan]) {
+    // Defer slightly so this runs after the rest of the page's init logic.
+    setTimeout(() => openOrderModal(retryPlan), 100);
+    const cleanUrl = window.location.pathname + window.location.hash;
+    window.history.replaceState(null, '', cleanUrl);
+  }
+})();
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+/* ============================================================
+   FAQ ACCORDION
+============================================================ */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-btn');
+  btn.addEventListener('click', () => {
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-btn').setAttribute('aria-expanded','false'); });
+    if (!open) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+  });
+});
+
+/* ============================================================
+   3-STEP ORDER MODAL
+============================================================ */
+let currentPlan = 'growth';
+let currentStep = 1;
+
+function openOrderModal(plan) {
+  currentPlan = plan || 'growth';
+  currentStep = 1;
+  selectPkg(currentPlan);
+  showStep(1);
+  document.getElementById('icpForm').reset();
+  document.getElementById('formSuccess').classList.remove('show');
+  document.getElementById('formSuccess').style.display = 'none';
+  document.getElementById('stepIndicator').style.display = 'flex';
+  document.getElementById('submitErrorBanner').classList.remove('show');
+  resetPayButton();
+  document.getElementById('orderModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeOrderModal() {
+  document.getElementById('orderModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('orderModal').addEventListener('click', e => { if (e.target === document.getElementById('orderModal')) closeOrderModal(); });
+
+/* Package selection UI */
+function selectPkg(plan) {
+  currentPlan = plan;
+  ['starter','growth','scale'].forEach(p => {
+    const lbl = document.getElementById('pkg-' + p);
+    const dot = document.getElementById('pk-' + p);
+    if (p === plan) {
+      lbl.style.borderColor = 'var(--orange)';
+      lbl.style.background = 'var(--orange-lt)';
+      dot.style.background = 'var(--orange)';
+      dot.style.borderColor = 'var(--orange)';
+      dot.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6 9 17l-5-5"/></svg>';
+    } else {
+      lbl.style.borderColor = 'var(--border-dk)';
+      lbl.style.background = '';
+      dot.style.background = '';
+      dot.style.borderColor = 'var(--border-dk)';
+      dot.innerHTML = '';
+    }
+  });
+  // Update badge in step 2
+  const m = PLAN_META[plan];
+  document.getElementById('badgeText').textContent = m.label + ' — ' + m.price + ' · ' + m.leads + ' · ' + m.delivery;
+}
+
+/* Step navigation */
+function showStep(n) {
+  currentStep = n;
+  [1,2,3].forEach(i => {
+    const panel = document.getElementById('step' + i);
+    if (panel) panel.classList.toggle('active', i === n);
+    // Step indicator dots
+    const dot = document.getElementById('sd' + i);
+    const lbl = document.getElementById('sl' + i);
+    if (dot) {
+      dot.classList.remove('active','done');
+      if (i < n) { dot.classList.add('done'); dot.innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.5"><path d="M20 6 9 17l-5-5"/></svg>'; }
+      else if (i === n) { dot.classList.add('active'); dot.textContent = i; }
+      else { dot.textContent = i; }
+    }
+    if (lbl) { lbl.classList.toggle('active', i === n); }
+  });
+}
+function goStep(n) { showStep(n); }
+
+/* Step 2 → 3 validation */
+function validateAndGoStep3() {
+  const required = [
+    { id: 'f_name',       msg: 'Full name is required.' },
+    { id: 'f_email',      msg: 'Business email is required.' },
+    { id: 'f_company',    msg: 'Company name is required.' },
+    { id: 'f_titles',     msg: 'Please enter target job titles.' },
+    { id: 'f_industries', msg: 'Please enter target industries.' },
+    { id: 'f_geo',        msg: 'Please enter target countries or regions.' }
+  ];
+  let valid = true;
+  required.forEach(r => {
+    const el = document.getElementById(r.id);
+    if (!el.value.trim()) { el.classList.add('error'); valid = false; }
+    else { el.classList.remove('error'); }
+  });
+  // Basic email sanity check beyond the native type="email" validation
+  const emailEl = document.getElementById('f_email');
+  const emailVal = emailEl.value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailVal);
+  if (emailVal && !emailOk) { emailEl.classList.add('error'); valid = false; }
+
+  if (!valid) { document.getElementById('icpForm').querySelector('.error').focus(); return; }
+  buildSummary();
+  showStep(3);
+}
+
+/* Build order summary in step 3 */
+function buildSummary() {
+  const m = PLAN_META[currentPlan];
+  const rows = [
+    ['Package',    m.label + ' — ' + m.leads],
+    ['Delivery',   m.delivery],
+    ['Name',       v('f_name')],
+    ['Email',      v('f_email')],
+    ['Company',    v('f_company')],
+    ['Titles',     v('f_titles')],
+    ['Industries', v('f_industries')],
+    ['Geography',  v('f_geo')],
+    ['Coy size',   v('f_size') || 'Any'],
+    ['Use case',   v('f_usecase') || '—'],
+    v('f_notes') ? ['Notes', v('f_notes')] : null
+  ].filter(Boolean);
+
+  document.getElementById('summaryTable').innerHTML = rows.map(([l,val]) =>
+    `<div class="summary-row"><span class="sr-label">${l}</span><span class="sr-val">${escHtml(val)}</span></div>`
+  ).join('');
+  document.getElementById('summaryTotal').textContent = m.price;
+}
+
+function v(id) { return document.getElementById(id).value.trim(); }
+
+/* ============================================================
+   ORDER STORAGE — local cache + email notification
+   localStorage is kept ONLY as an on-device dashboard cache
+   (useful for a quick glance on this browser). It is NOT the
+   source of truth for order delivery — the email notification
+   below is what actually reaches the Meer HQ team, from any
+   device, any browser, anywhere.
+============================================================ */
+function saveOrderLocally(order) {
+  try {
+    const orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+    orders.unshift(order);
+    localStorage.setItem('leadvault_orders', JSON.stringify(orders));
+    return true;
+  } catch (err) {
+    console.error('Local order cache failed:', err);
+    return false;
+  }
+}
+
+async function sendOrderEmail(order) {
+  // IMPORTANT: sent as a URL-encoded string body (see `body` below), not
+  // JSON and not FormData. A JSON body forces a CORS preflight (an extra
+  // OPTIONS request). FormData avoids the preflight but isn't reliably
+  // cloneable through Claude's sandboxed in-chat preview. A plain string
+  // avoids both problems — see the comment above the `body` assignment.
+  const payload = {
+    _subject: `New LeadVault order — ${order.plan.toUpperCase()} (${order.company})`,
+    Order_ID: order.id,
+    Submitted: order.timestamp,
+    Package: PLAN_META[order.plan].label + ' — ' + PLAN_META[order.plan].price,
+    Name: order.name,
+    Email: order.email,
+    Company: order.company,
+    Website: order.website || '—',
+    Target_Titles: order.titles,
+    Target_Industries: order.industries,
+    Geography: order.geo,
+    Company_Size: order.companySize,
+    Use_Case: order.useCase,
+    Notes: order.notes || '—',
+    _template: 'table',
+    _captcha: 'false'
+  };
+
+  // Sent as a URL-encoded STRING body, not FormData and not JSON.
+  // FormData objects aren't reliably serializable through Claude's sandboxed
+  // in-chat preview, which proxies fetch() across an iframe boundary — that's
+  // what caused "The object can not be cloned" even after removing
+  // AbortController. A plain string has no cloning ambiguity at all, and
+  // 'application/x-www-form-urlencoded' is still a CORS-safelisted content
+  // type, so this keeps the no-preflight behavior too.
+  const body = new URLSearchParams(payload).toString();
+
+  // Timeout via Promise.race instead of AbortController/AbortSignal.
+  // AbortSignal is NOT structured-cloneable, and sandboxed preview
+  // environments (like Claude's in-chat artifact preview) proxy fetch()
+  // across an iframe boundary using postMessage, which requires every
+  // value in the request — including the signal — to survive structured
+  // clone. Passing a signal there throws "The object can not be cloned"
+  // before the request even leaves the page. Promise.race achieves the
+  // same "give up after N seconds" behavior without touching fetch's
+  // options object at all, so it works in both sandboxed and real contexts.
+  const FETCH_TIMEOUT_MS = 12000;
+  const timeoutPromise = new Promise((_, reject) =>
+    setTimeout(() => reject(new Error('Email notification timed out after 12s (no response from FormSubmit).')), FETCH_TIMEOUT_MS)
+  );
+
+  let res;
+  try {
+    res = await Promise.race([
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded', // CORS-safelisted — keeps this a no-preflight request
+          'Accept': 'application/json'
+        },
+        body: body
+      }),
+      timeoutPromise
+    ]);
+  } catch (err) {
+    // Re-throw with more context — this is the branch that previously
+    // surfaced as a bare "Load failed" with no further detail.
+    throw new Error('Email notification could not reach FormSubmit: ' + err.message);
+  }
+
+  if (!res.ok) throw new Error('Email notification failed with status ' + res.status);
+  return res;
+}
+
+function resetPayButton() {
+  const btn = document.getElementById('payNowBtn');
+  btn.disabled = false;
+  btn.innerHTML = 'Pay now →';
+}
+
+/* Final submission → email notification + local cache + redirect to payment */
+async function submitOrder() {
+  const order = {
+    id:         'LV-' + Date.now(),
+    timestamp:  new Date().toISOString(),
+    plan:       currentPlan,
+    name:       v('f_name'),
+    email:      v('f_email'),
+    company:    v('f_company'),
+    website:    v('f_website'),
+    titles:     v('f_titles'),
+    industries: v('f_industries'),
+    geo:        v('f_geo'),
+    companySize: v('f_size') || 'Any',
+    useCase:    v('f_usecase') || '—',
+    notes:      v('f_notes'),
+    _synced:    false
+  };
+
+  const payBtn = document.getElementById('payNowBtn');
+  const editBtn = document.getElementById('editIcpBtn');
+  const errorBanner = document.getElementById('submitErrorBanner');
+  payBtn.disabled = true;
+  editBtn.disabled = true;
+  errorBanner.classList.remove('show');
+  payBtn.innerHTML = '<span class="spinner"></span> Sending…';
+
+  let emailed = false;
+  try {
+    await sendOrderEmail(order);
+    emailed = true;
+    order._synced = true;
+  } catch (err) {
+    console.error('Order email notification failed:', err);
+    errorBanner.classList.add('show');
+  }
+
+  // Best-effort sync to the cross-device backend (Google Sheets via Apps
+  // Script). This is what powers admin.html. It never blocks the order
+  // flow — if it fails, the email notification above and the local cache
+  // below are still there as a safety net.
+  if (SHEET_BACKEND_CONFIGURED) {
+    try {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        body: JSON.stringify(order) // no Content-Type header set — keeps this a no-preflight request
+      });
+    } catch (err) {
+      console.error('Order sync to backend sheet failed (order is still safe via email + local cache):', err);
+    }
+  }
+
+  saveOrderLocally(order);
+  editBtn.disabled = false;
+
+  // Proceed to payment regardless of email outcome — the order is never
+  // blocked by a delivery failure, and the local cache + this banner
+  // ensure nothing silently disappears.
+  [1,2,3].forEach(i => { const p = document.getElementById('step' + i); if(p) p.classList.remove('active'); });
+  document.getElementById('stepIndicator').style.display = 'none';
+  const succ = document.getElementById('formSuccess');
+  succ.classList.add('show');
+  succ.style.display = 'block';
+  if (!emailed) {
+    succ.querySelector('p').textContent = "Your ICP brief was saved on this device, but we couldn't confirm email delivery. Please also email contact@meerhq.io with your Order ID (" + order.id + ") just in case. You're now being redirected to complete payment.";
+  }
+
+  const payUrl = PAYMENT_LINKS[currentPlan];
+  document.getElementById('manualPayLink').href = payUrl;
+
+  // Remember which order we're about to send to payment, so that if
+  // Flutterwave redirects back here with a success status, we know which
+  // locally-cached order to mark as paid.
+  try { localStorage.setItem('leadvault_pending_order', order.id); } catch (err) { console.error('Could not store pending order reference:', err); }
+
+  setTimeout(() => { window.location.href = payUrl; }, 2800);
+}
+
+/* Keyboard escape */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeOrderModal(); closeDash(); }
+});
+
+/* ============================================================
+   ADMIN DASHBOARD
+============================================================ */
+function openDash() {
+  document.getElementById('dashOverlay').classList.add('open');
+  document.getElementById('dashAuth').style.display = 'block';
+  document.getElementById('dashContent').style.display = 'none';
+  document.getElementById('wrongPin').classList.remove('show');
+  document.getElementById('pinInput').value = '';
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => document.getElementById('pinInput').focus(), 200);
+}
+function closeDash() {
+  document.getElementById('dashOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function checkPin() {
+  if (document.getElementById('pinInput').value === ADMIN_PIN) {
+    document.getElementById('dashAuth').style.display = 'none';
+    const dc = document.getElementById('dashContent');
+    dc.style.display = 'flex';
+    renderDashboard();
+  } else {
+    document.getElementById('wrongPin').classList.add('show');
+    document.getElementById('pinInput').value = '';
+    document.getElementById('pinInput').focus();
+  }
+}
+document.getElementById('pinInput').addEventListener('keydown', e => { if (e.key === 'Enter') checkPin(); });
+document.getElementById('dashOverlay').addEventListener('click', e => { if (e.target === document.getElementById('dashOverlay')) closeDash(); });
+
+function renderDashboard() {
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+  } catch (err) {
+    console.error('Could not read local order cache:', err);
+  }
+  const c = document.getElementById('dashOrders');
+  document.getElementById('dashSubtitle').textContent = orders.length + ' submission' + (orders.length !== 1 ? 's' : '') + ' cached on this device · full history is in the contact@meerhq.io inbox';
+
+  if (!orders.length) {
+    c.innerHTML = `<div class="dash-empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--border-dk)" stroke-width="1.5" style="margin:0 auto 16px;display:block;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><h4>No orders on this device yet</h4><p>Orders are emailed to contact@meerhq.io as they come in — this view only mirrors what's been submitted from this browser.</p></div>`;
+    return;
+  }
+
+  const bc = { starter:'badge-starter', growth:'badge-growth', scale:'badge-scale' };
+  c.innerHTML = `<p class="order-count">${orders.length} order${orders.length!==1?'s':''} cached on this device</p>` +
+    orders.map(o => {
+      const m = PLAN_META[o.plan] || { label: o.plan, price: '—' };
+      const syncBadge = o._synced
+        ? '<span class="sync-badge sync-ok">✓ Emailed</span>'
+        : '<span class="sync-badge sync-fail">⚠ Not confirmed</span>';
+      const payBadge = o._paymentConfirmed
+        ? '<span class="sync-badge sync-ok">✓ Paid</span>'
+        : '<span class="sync-badge sync-fail">⏳ Awaiting payment</span>';
+      return `<div class="order-card">
+        <div class="order-top">
+          <div class="order-meta">
+            <h4>${escHtml(o.name)} · ${escHtml(o.company)}</h4>
+            <div class="order-date">${fmtDate(o.timestamp)} · ${o.id} · ${syncBadge} · ${payBadge}</div>
+          </div>
+          <span class="order-plan-badge ${bc[o.plan]||'badge-starter'}">${m.label} ${m.price}</span>
+        </div>
+        <div class="order-details">
+          <div><div class="od-label">Email</div><div class="od-val">${escHtml(o.email)}</div></div>
+          <div><div class="od-label">Website</div><div class="od-val">${o.website ? escHtml(o.website) : '—'}</div></div>
+          <div><div class="od-label">Company size</div><div class="od-val">${escHtml(o.companySize||'Any')}</div></div>
+        </div>
+        <div class="order-icp">
+          <div class="od-label" style="margin-bottom:8px;">ICP Brief</div>
+          <div class="od-val">
+            <strong>Titles:</strong> ${escHtml(o.titles)}<br>
+            <strong>Industries:</strong> ${escHtml(o.industries)}<br>
+            <strong>Geography:</strong> ${escHtml(o.geo)}
+            ${o.useCase && o.useCase !== '—' ? `<br><strong>Use case:</strong> ${escHtml(o.useCase)}` : ''}
+            ${o.notes ? `<br><strong>Notes:</strong> ${escHtml(o.notes)}` : ''}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+}
+
+function clearOrders() {
+  if (confirm('Delete all order submissions cached on this device? This cannot be undone. (Emails already sent to contact@meerhq.io are unaffected.)')) {
+    try { localStorage.removeItem('leadvault_orders'); } catch (err) { console.error(err); }
+    renderDashboard();
+  }
+}
+
+function exportCSV() {
+  let orders = [];
+  try {
+    orders = JSON.parse(localStorage.getItem('leadvault_orders') || '[]');
+  } catch (err) {
+    alert('Could not read local order cache.');
+    return;
+  }
+  if (!orders.length) { alert('No orders cached on this device to export.'); return; }
+  const headers = ['Order ID','Date','Plan','Name','Email','Company','Website','Titles','Industries','Geography','Company Size','Use Case','Notes','Emailed'];
+  const rows = orders.map(o => [o.id,o.timestamp,o.plan,o.name,o.email,o.company,o.website||'',o.titles,o.industries,o.geo,o.companySize||'',o.useCase||'',o.notes||'', o._synced ? 'yes' : 'no'].map(x => '"'+String(x).replace(/"/g,'""')+'"'));
+  const csv = [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([csv],{type:'text/csv'}));
+  a.download = 'leadvault_orders_' + new Date().toISOString().slice(0,10) + '.csv';
+  a.click();
+}
+
+function escHtml(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function fmtDate(iso) {
+  return new Date(iso).toLocaleString('en-GB',{day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});
+}
+</script>
+
+</body>
+</html>
