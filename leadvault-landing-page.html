@@ -1572,9 +1572,9 @@ const ADMIN_PIN = '2026'; // ← change to your preferred PIN
    Uses FormSubmit.co — a free, no-signup form backend that emails
    whoever owns the inbox below whenever a POST hits this endpoint.
    ONE-TIME SETUP: the very first submission triggers an activation
-   email from FormSubmit to contact@meerhq.io — click "Confirm" in that
+   email from FormSubmit to wearemeerhq@gmail.com — click "Confirm" in that
    email once, and every submission after that is delivered automatically. */
-const NOTIFY_EMAIL = 'wearemeerhq@gmail.com'; // ⚠️ TEMPORARY — diagnostic test, switch back to contact@meerhq.io after
+const NOTIFY_EMAIL = 'wearemeerhq@gmail.com';
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
 
 /* Cross-device order backend (Google Apps Script + Google Sheets).
@@ -1596,7 +1596,7 @@ const SHEET_BACKEND_CONFIGURED = APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1;
    back here. This page (leadvault-landing-page.html) still has its own
    copy of this same handling below as a fallback, in case the Redirect
    URL ever points here instead — either way the customer gets a clear
-   confirmation and contact@meerhq.io gets a SEPARATE "payment confirmed"
+   confirmation and wearemeerhq@gmail.com gets a SEPARATE "payment confirmed"
    email, distinct from the "order submitted" email sent earlier.
 
    THIS ONLY WORKS IF a Redirect URL is set on each Flutterwave Payment
@@ -2108,10 +2108,10 @@ function renderDashboard() {
     console.error('Could not read local order cache:', err);
   }
   const c = document.getElementById('dashOrders');
-  document.getElementById('dashSubtitle').textContent = orders.length + ' submission' + (orders.length !== 1 ? 's' : '') + ' cached on this device · full history is in the contact@meerhq.io inbox';
+  document.getElementById('dashSubtitle').textContent = orders.length + ' submission' + (orders.length !== 1 ? 's' : '') + ' cached on this device · full history is in the wearemeerhq@gmail.com inbox';
 
   if (!orders.length) {
-    c.innerHTML = `<div class="dash-empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--border-dk)" stroke-width="1.5" style="margin:0 auto 16px;display:block;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><h4>No orders on this device yet</h4><p>Orders are emailed to contact@meerhq.io as they come in — this view only mirrors what's been submitted from this browser.</p></div>`;
+    c.innerHTML = `<div class="dash-empty"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--border-dk)" stroke-width="1.5" style="margin:0 auto 16px;display:block;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg><h4>No orders on this device yet</h4><p>Orders are emailed to wearemeerhq@gmail.com as they come in — this view only mirrors what's been submitted from this browser.</p></div>`;
     return;
   }
 
@@ -2153,7 +2153,7 @@ function renderDashboard() {
 }
 
 function clearOrders() {
-  if (confirm('Delete all order submissions cached on this device? This cannot be undone. (Emails already sent to contact@meerhq.io are unaffected.)')) {
+  if (confirm('Delete all order submissions cached on this device? This cannot be undone. (Emails already sent to wearemeerhq@gmail.com are unaffected.)')) {
     try { localStorage.removeItem('leadvault_orders'); } catch (err) { console.error(err); }
     renderDashboard();
   }
