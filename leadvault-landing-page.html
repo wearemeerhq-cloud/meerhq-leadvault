@@ -1568,20 +1568,17 @@ const PLAN_META = {
 };
 const ADMIN_PIN = '2026'; // ← change to your preferred PIN
 
-/* Email-on-submit config.
-   Uses FormSubmit.co — a free, no-signup form backend that emails
-   whoever owns the inbox below whenever a POST hits this endpoint.
-   ONE-TIME SETUP: the very first submission triggers an activation
-   email from FormSubmit to wearemeerhq@gmail.com — click "Confirm" in that
-   email once, and every submission after that is delivered automatically. */
-const NOTIFY_EMAIL = 'wearemeerhq@gmail.com';
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/' + NOTIFY_EMAIL;
+/* Admin + customer email notifications now run entirely server-side,
+   through leadvault-order-backend.gs (Google Apps Script) → Brevo.
+   FormSubmit.co was used here previously but required manual email
+   activation and had a low free-tier cap, causing silently missed
+   notifications — removed in favor of the already-working Brevo pipeline. */
 
 /* Cross-device order backend (Google Apps Script + Google Sheets).
-   See apps-script-backend.gs for the code to deploy, and admin.html for
-   the dashboard that reads from it. Fill these in after deploying —
-   until then, orders still work via email + this-device-only cache,
-   they just won't show up in admin.html. */
+   See leadvault-order-backend.gs for the code to deploy, and admin.html
+   for the dashboard that reads from it. This is now also what triggers
+   ALL email notifications (customer + admin, order + payment) — if this
+   isn't configured, no emails go out at all, not just the Sheet sync. */
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9wNLSzxSGCKl5L9m3j5UqXlUVgSXg6uLMCUO1NOp3XRQ2_XIIwXcV5sCPM2m5TOt_bw/exec';
 const SHEET_BACKEND_CONFIGURED = APPS_SCRIPT_URL.indexOf('PASTE_YOUR') === -1;
 
@@ -1640,33 +1637,16 @@ function retryPaymentFromBanner() {
   openOrderModal(retryPlanFromBanner);
 }
 
-async function sendPaymentConfirmationEmail(order, txRef, transactionId) {
-  const payload = {
-    _subject: `✅ PAYMENT CONFIRMED — Order ${order ? order.id : txRef}`,
-    Order_ID: order ? order.id : '(not matched locally — check Flutterwave dashboard)',
-    Flutterwave_tx_ref: txRef || '—',
-    Flutterwave_transaction_id: transactionId || '—',
-    Plan: order ? (PLAN_META[order.plan] ? PLAN_META[order.plan].label + ' — ' + PLAN_META[order.plan].price : order.plan) : '—',
-    Customer_Name: order ? order.name : '—',
-    Customer_Email: order ? order.email : '—',
-    Company: order ? order.company : '—',
-    Note: 'This confirms PAYMENT was completed via Flutterwave. Cross-check your Flutterwave dashboard before starting fulfillment.',
-    _subject_prefix: '',
-    _template: 'table',
-    _captcha: 'false'
-  };
-  const body = new URLSearchParams(payload).toString();
-  try {
-    await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' },
-      body: body
-    });
-  } catch (err) {
-    console.error('Payment confirmation email failed to send:', err);
-    // Non-fatal — the banner and local cache update already happened,
-    // so the info isn't lost even if this specific email fails.
-  }
+/* Syncs payment confirmation to leadvault-order-backend.gs, which is what
+   triggers BOTH the customer "Payment Confirmed" email and the admin
+   notification email (via Brevo) — this single call replaces what used
+   to be two separate things: a FormSubmit admin email + a silent Sheet sync. */
+function sendPaymentSyncToBackend(order, txRef, transactionId) {
+  if (!SHEET_BACKEND_CONFIGURED || !order) return;
+  fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    body: JSON.stringify({ action: 'confirmPayment', orderId: order.id, flwTxRef: txRef, flwTransactionId: transactionId })
+  }).catch(err => console.error('Could not sync payment confirmation to backend (customer + admin payment emails will not have been sent):', err));
 }
 
 function handlePaymentRedirect() {
@@ -1708,13 +1688,7 @@ function handlePaymentRedirect() {
         : `Reference ${txRef || transactionId || ''} — we've notified the team. If you have questions, email contact@meerhq.io.`,
       false
     );
-    sendPaymentConfirmationEmail(matchedOrder, txRef, transactionId);
-    if (SHEET_BACKEND_CONFIGURED && matchedOrder) {
-      fetch(APPS_SCRIPT_URL, {
-        method: 'POST',
-        body: JSON.stringify({ action: 'confirmPayment', orderId: matchedOrder.id, flwTxRef: txRef, flwTransactionId: transactionId })
-      }).catch(err => console.error('Could not sync payment confirmation to backend sheet:', err));
-    }
+    sendPaymentSyncToBackend(matchedOrder, txRef, transactionId);
     try { localStorage.removeItem('leadvault_pending_order'); } catch (err) { console.error(err); }
   } else {
     // 'cancelled', 'failed', or any other non-success status Flutterwave sends.
@@ -1909,76 +1883,10 @@ function saveOrderLocally(order) {
   }
 }
 
-async function sendOrderEmail(order) {
-  // IMPORTANT: sent as a URL-encoded string body (see `body` below), not
-  // JSON and not FormData. A JSON body forces a CORS preflight (an extra
-  // OPTIONS request). FormData avoids the preflight but isn't reliably
-  // cloneable through Claude's sandboxed in-chat preview. A plain string
-  // avoids both problems — see the comment above the `body` assignment.
-  const payload = {
-    _subject: `New LeadVault order — ${order.plan.toUpperCase()} (${order.company})`,
-    Order_ID: order.id,
-    Submitted: order.timestamp,
-    Package: PLAN_META[order.plan].label + ' — ' + PLAN_META[order.plan].price,
-    Name: order.name,
-    Email: order.email,
-    Company: order.company,
-    Website: order.website || '—',
-    Target_Titles: order.titles,
-    Target_Industries: order.industries,
-    Geography: order.geo,
-    Company_Size: order.companySize,
-    Use_Case: order.useCase,
-    Notes: order.notes || '—',
-    _template: 'table',
-    _captcha: 'false'
-  };
-
-  // Sent as a URL-encoded STRING body, not FormData and not JSON.
-  // FormData objects aren't reliably serializable through Claude's sandboxed
-  // in-chat preview, which proxies fetch() across an iframe boundary — that's
-  // what caused "The object can not be cloned" even after removing
-  // AbortController. A plain string has no cloning ambiguity at all, and
-  // 'application/x-www-form-urlencoded' is still a CORS-safelisted content
-  // type, so this keeps the no-preflight behavior too.
-  const body = new URLSearchParams(payload).toString();
-
-  // Timeout via Promise.race instead of AbortController/AbortSignal.
-  // AbortSignal is NOT structured-cloneable, and sandboxed preview
-  // environments (like Claude's in-chat artifact preview) proxy fetch()
-  // across an iframe boundary using postMessage, which requires every
-  // value in the request — including the signal — to survive structured
-  // clone. Passing a signal there throws "The object can not be cloned"
-  // before the request even leaves the page. Promise.race achieves the
-  // same "give up after N seconds" behavior without touching fetch's
-  // options object at all, so it works in both sandboxed and real contexts.
-  const FETCH_TIMEOUT_MS = 12000;
-  const timeoutPromise = new Promise((_, reject) =>
-    setTimeout(() => reject(new Error('Email notification timed out after 12s (no response from FormSubmit).')), FETCH_TIMEOUT_MS)
-  );
-
-  let res;
-  try {
-    res = await Promise.race([
-      fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded', // CORS-safelisted — keeps this a no-preflight request
-          'Accept': 'application/json'
-        },
-        body: body
-      }),
-      timeoutPromise
-    ]);
-  } catch (err) {
-    // Re-throw with more context — this is the branch that previously
-    // surfaced as a bare "Load failed" with no further detail.
-    throw new Error('Email notification could not reach FormSubmit: ' + err.message);
-  }
-
-  if (!res.ok) throw new Error('Email notification failed with status ' + res.status);
-  return res;
-}
+/* Admin "new order" notification, and the customer's own order-received
+   email, are now both sent server-side from leadvault-order-backend.gs
+   (see sendOrderReceivedEmail + sendAdminOrderNotification in that file)
+   when it receives the POST in submitOrder() below. */
 
 function resetPayButton() {
   const btn = document.getElementById('payNowBtn');
@@ -2013,35 +1921,36 @@ async function submitOrder() {
   errorBanner.classList.remove('show');
   payBtn.innerHTML = '<span class="spinner"></span> Sending…';
 
-  let emailed = false;
-  try {
-    await sendOrderEmail(order);
-    emailed = true;
-    order._synced = true;
-  } catch (err) {
-    console.error('Order email notification failed:', err);
-    errorBanner.classList.add('show');
-  }
-
-  // Best-effort sync to the cross-device backend (Google Sheets via Apps
-  // Script). This is what powers admin.html. It never blocks the order
-  // flow — if it fails, the email notification above and the local cache
-  // below are still there as a safety net.
+  // This POST to Apps Script is now what triggers EVERYTHING email-related:
+  // the customer's "Order Received" email AND the admin "New Order" email
+  // (both sent via Brevo from leadvault-order-backend.gs), plus the Sheet
+  // row that admin.html reads. If this fails, none of those happen — so
+  // its success is what the fallback message below is based on now.
+  let synced = false;
   if (SHEET_BACKEND_CONFIGURED) {
     try {
-      await fetch(APPS_SCRIPT_URL, {
+      const res = await fetch(APPS_SCRIPT_URL, {
         method: 'POST',
         body: JSON.stringify(order) // no Content-Type header set — keeps this a no-preflight request
       });
+      let json = null;
+      try { json = await res.json(); } catch (parseErr) { /* handled by synced staying false below */ }
+      synced = !!(json && json.ok);
+      if (!synced) console.error('Backend did not confirm success:', json);
     } catch (err) {
-      console.error('Order sync to backend sheet failed (order is still safe via email + local cache):', err);
+      console.error('Order sync to backend failed (no emails will have been sent for this order):', err);
     }
+  } else {
+    console.warn('SHEET_BACKEND_CONFIGURED is false — no backend set up, so no emails are sent for any order.');
   }
+
+  order._synced = synced;
+  if (!synced) errorBanner.classList.add('show');
 
   saveOrderLocally(order);
   editBtn.disabled = false;
 
-  // Proceed to payment regardless of email outcome — the order is never
+  // Proceed to payment regardless of sync outcome — the order is never
   // blocked by a delivery failure, and the local cache + this banner
   // ensure nothing silently disappears.
   [1,2,3].forEach(i => { const p = document.getElementById('step' + i); if(p) p.classList.remove('active'); });
@@ -2049,8 +1958,8 @@ async function submitOrder() {
   const succ = document.getElementById('formSuccess');
   succ.classList.add('show');
   succ.style.display = 'block';
-  if (!emailed) {
-    succ.querySelector('p').textContent = "Your ICP brief was saved on this device, but we couldn't confirm email delivery. Please also email contact@meerhq.io with your Order ID (" + order.id + ") just in case. You're now being redirected to complete payment.";
+  if (!synced) {
+    succ.querySelector('p').textContent = "Your ICP brief was saved on this device, but we couldn't confirm it reached our system, so no confirmation email may have gone out. Please also email contact@meerhq.io with your Order ID (" + order.id + ") just in case. You're now being redirected to complete payment.";
   }
 
   const payUrl = PAYMENT_LINKS[currentPlan];
